@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LEGO Star Wars - Darth Vader Helmet Detail</title>
+<!-- Google Fonts for Playfair Display and Monospace -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'gallery-ivory': '#FAFAFA',
+            'gallery-charcoal': '#1A1A1A',
+            'gallery-gold': '#C9A84C',
+            'gallery-red': '#8B0000',
+            'gallery-gray': '#6B7280',
+            'gallery-border': '#E5E7EB',
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+            sans: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-styling">
+    body {
+      background-color: #FFFFFF;
+      background-image: radial-gradient(#F5F5F0 0.5px, transparent 0.5px);
+      background-size: 24px 24px;
+    }
+    
+    .frosted-overlay {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-shadow {
+      box-shadow: 0 10px 50px -12px rgba(0, 0, 0, 0.08);
+    }
+
+    .dashed-border {
+      border-style: dashed;
+    }
+    
+    /* Elegant transition for gallery interaction */
+    .gallery-thumb:hover {
+      border-color: #C9A84C;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+<!-- BEGIN: Modal Backdrop -->
+<div class="fixed inset-0 frosted-overlay flex items-center justify-center z-50 p-4 sm:p-8" data-purpose="modal-backdrop">
+<!-- BEGIN: Main Modal Container -->
+<article class="bg-white w-full max-w-[900px] modal-shadow border border-gallery-border relative overflow-hidden flex flex-col md:flex-row" data-purpose="product-detail-card">
+<!-- Close Button -->
+<button aria-label="Close modal" class="absolute top-6 right-6 text-gallery-charcoal hover:opacity-50 transition-opacity z-10">
+<svg fill="none" height="24" stroke="currentColor" stroke-width="1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- BEGIN: Left Column (Visuals) -->
+<section class="w-full md:w-[40%] bg-white p-8 flex flex-col items-center justify-between border-b md:border-b-0 md:border-r border-gallery-border" data-purpose="visual-gallery">
+<!-- Main Image Container -->
+<div class="relative w-full aspect-square flex items-center justify-center group" data-purpose="hero-image-wrapper">
+<!-- Navigation Arrows -->
+<button class="absolute left-0 text-gallery-gray hover:text-gallery-charcoal transition-colors">
+<span class="text-xl">←</span>
+</button>
+<img alt="LEGO Darth Vader Helmet Front View" class="max-w-full h-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTjk4UgBM1n3aeG250vRubol_sDGYh5K8h3UAPEgWuhjKwMvfT8RTaPpX_fGmxYlpDnTmZEMWpaX7nLWvkhzKIDz7vxfCt5MXNhQ47IVGhR08OLNKPg08R0l2kAmpba6lQ4FXHTMnZI4BDNLbN_bZKp7CLyp7SrNRTdpIjtXqWmA3C2y-z7ZRNzfGdMI-DRkK2uBsvP7NvYIFAPtJI84jBQqealXcenrkJiyEIOzuXyzbtYvK0bH-l212rGho10cli9k3cohfcLgk"/>
+<button class="absolute right-0 text-gallery-gray hover:text-gallery-charcoal transition-colors">
+<span class="text-xl">→</span>
+</button>
+</div>
+<!-- Variant Thumbnails -->
+<div class="flex gap-3 mt-8" data-purpose="thumbnail-navigation">
+<button class="gallery-thumb w-16 h-16 border border-gallery-gold p-1 transition-all">
+<img alt="Side View" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATOmf_5OtJUCp_BmFRiGLZTSGbwP_ViQsF8N8majouRQO1t4UCsiUTjxnwugIa7tDFjDa9sdi7UueMu3CWaW1WdRo7rrqDz4aV8Jsm2zYCYsp9uVEZng9XrH4sAuJ4w7SPATFuLUzbEYOUFbYsrGUPqVt8LWJUfj6uRXQqwfNOYdHteBrXFUfhxXJ6twx_28L2fjUlSmDtUKrhi5rBsoo-gaBFhharwJm0tcE7B8cdL1AkuY6DE37qsNRENXgB2nnFqZCj83oaIho"/>
+</button>
+<button class="gallery-thumb w-16 h-16 border border-gallery-border p-1 opacity-60 transition-all hover:opacity-100">
+<img alt="Back View" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdXlokOdr3ESGAb9fajz0imRpK0xfgIrzuB9-lTHRrZ6JtUCi8gnNjYZxyKCBdp-mcf4FGtkRW2vtTfgJYzaEkfZO2ihz1WMp3wyWueSHwB2aOrw7zVxN7WFoccZso6dFBKpUUvxs744MBIBY8xi1q30Mz3pZjxcrcJyJcAlMNwQZ05ykOkmsrTVLoAwlFu6tHmMznyl6e7LQWvzw190WpHxQU7YWwzN1QKh7UiCDTPu3UAdGMV9YpFPOL8fxhS5ROgD-lWsg4tdw"/>
+</button>
+<button class="gallery-thumb w-16 h-16 border border-gallery-border p-1 opacity-60 transition-all hover:opacity-100">
+<img alt="Box Art" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC2HX6UeDtCOhQTvjLjjl7rCux5p3djHlJaEVdPcj8oBQJxalqMN6sY2o4sJQ79jfJZNC5S-R9e6Ru7ACy-32eEZoRKtAO9-LOwk2_zbJDXRpPnqqtKx04lor4vRB64t6bwDQyv00Ye2FgNW22lJaCkpOIjQ64qL1jLMJfelc8GufPXmI-RAxIL2XYzF5lie-YgzxZAX5SoIvIu9oCFuX8YTAWqbNpryGoCIjBTEj2clf-OlB_CqS2f0xsVSbCOA3wV8lEZNMQces"/>
+</button>
+</div>
+<!-- Side Badge -->
+<div class="mt-8">
+<span class="inline-flex items-center px-4 py-1 border border-gallery-red text-[10px] tracking-[0.2em] font-mono text-gallery-red">
+<span class="w-1.5 h-1.5 bg-gallery-red rounded-full mr-2"></span>
+            DARK SIDE
+          </span>
+</div>
+</section>
+<!-- END: Left Column -->
+<!-- BEGIN: Right Column (Information) -->
+<section class="w-full md:w-[60%] p-8 md:p-12 flex flex-col justify-between" data-purpose="content-information">
+<div class="space-y-6">
+<!-- Header Info -->
+<header>
+<p class="font-mono text-[10px] tracking-[0.25em] text-gallery-gold uppercase mb-2">Set #75304</p>
+<h1 class="font-serif text-[32px] text-gallery-charcoal tracking-wide uppercase leading-tight">Darth Vader</h1>
+<hr class="w-full border-gallery-gold mt-4 mb-8 opacity-40"/>
+</header>
+<!-- Specifications Grid -->
+<div class="grid grid-cols-2 gap-y-6 gap-x-8" data-purpose="specs-grid">
+<div class="space-y-1">
+<p class="font-mono text-[9px] text-gallery-gray tracking-tighter uppercase">Set No</p>
+<p class="font-sans font-semibold text-gallery-charcoal">75304</p>
+</div>
+<div class="space-y-1">
+<p class="font-mono text-[9px] text-gallery-gray tracking-tighter uppercase">Year</p>
+<p class="font-sans font-semibold text-gallery-charcoal">2021</p>
+</div>
+<div class="space-y-1">
+<p class="font-mono text-[9px] text-gallery-gray tracking-tighter uppercase">Series</p>
+<p class="font-sans font-semibold text-gallery-charcoal">Original Trilogy</p>
+</div>
+<div class="space-y-1">
+<p class="font-mono text-[9px] text-gallery-gray tracking-tighter uppercase">Side</p>
+<p class="font-sans font-semibold text-gallery-charcoal">Dark</p>
+</div>
+<div class="space-y-1">
+<p class="font-mono text-[9px] text-gallery-gray tracking-tighter uppercase">Pieces</p>
+<p class="font-sans font-semibold text-gallery-charcoal">834</p>
+</div>
+<div class="space-y-1">
+<p class="font-mono text-[9px] text-gallery-gray tracking-tighter uppercase">Difficulty</p>
+<p class="font-sans font-semibold text-gallery-charcoal">★★★★☆</p>
+</div>
+</div>
+<!-- Description -->
+<div class="pt-4" data-purpose="description-block">
+<p class="font-serif italic text-gallery-gray text-sm leading-relaxed max-w-md">
+              A sophisticated interpretation of the Sith Lord’s iconic helmet, meticulously captured in 834 elements. This display model commands attention with its sinister geometry and polished finish, serving as a centerpiece for the discerning collector.
+            </p>
+</div>
+</div>
+<!-- Interaction Footer -->
+<div class="mt-12 space-y-8">
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row gap-4" data-purpose="action-buttons">
+<a class="flex-1 px-6 py-3 border border-gallery-gold text-center text-[11px] font-mono tracking-widest text-gallery-gold hover:bg-gallery-gold hover:text-white transition-all duration-300" href="#">
+              SHOP ON LEGO.COM
+            </a>
+<a class="flex-1 px-6 py-3 border dashed-border border-gallery-gray text-center text-[11px] font-mono tracking-widest text-gallery-gray hover:bg-gray-50 transition-all duration-300" href="#">
+              BRICKLINK
+            </a>
+</div>
+<!-- Pagination Footer -->
+<footer class="flex justify-between items-center pt-4 border-t border-gallery-border">
+<div class="text-[10px] font-mono tracking-widest text-gallery-gray uppercase">
+              1 / 24 <span class="mx-2">·</span> <button class="hover:text-gallery-charcoal">Next</button>
+</div>
+</footer>
+</div>
+</section>
+<!-- END: Right Column -->
+</article>
+<!-- END: Main Modal Container -->
+</div>
+<!-- END: Modal Backdrop -->
+</body></html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c9a74a",
+                        "background-light": "#ffffff",
+                        "background-dark": "#0a0a0a",
+                        "museum-dark": "#1a1a1a",
+                        "museum-gray": "#6B7280"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .small-caps { font-variant: all-small-caps; letter-spacing: 0.1em; }
+        .thin-gold-border { border-bottom: 1px solid #c9a74a; }
+        .hover-gold:hover { border: 1px solid #c9a74a; }
+        body { background-color: #ffffff; color: #1a1a1a; font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light text-museum-dark selection:bg-primary/30">
+<!-- NAVIGATION BAR -->
+<nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-primary/30 px-6 lg:px-20 py-6">
+<div class="max-w-[1600px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl">architecture</span>
+<h1 class="font-serif text-2xl tracking-tight">HELMET COLLECTION</h1>
+</div>
+<div class="hidden md:flex items-center gap-12">
+<a class="small-caps text-xs font-medium hover:text-primary transition-colors" href="#">Collection</a>
+<a class="small-caps text-xs font-medium hover:text-primary transition-colors" href="#">Favorites</a>
+<a class="small-caps text-xs font-medium hover:text-primary transition-colors" href="#">About</a>
+</div>
+</div>
+</nav>
+<!-- HERO SECTION -->
+<section class="py-[120px] px-6 text-center border-b border-slate-100">
+<div class="max-w-4xl mx-auto flex flex-col items-center">
+<p class="small-caps text-museum-gray text-sm mb-6 tracking-[0.2em]">LEGO Star Wars — 24 Pieces — 6 Series</p>
+<div class="w-12 h-[1px] bg-primary mb-12"></div>
+<h2 class="font-serif text-6xl md:text-7xl font-light mb-16 italic tracking-tight">The Imperial Archives</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 w-full max-w-3xl border-t border-slate-50 pt-12">
+<div class="flex flex-col items-center">
+<span class="font-mono text-[10px] text-primary uppercase tracking-widest mb-1">Helmets</span>
+<span class="text-3xl font-light">24</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-mono text-[10px] text-primary uppercase tracking-widest mb-1">Series</span>
+<span class="text-3xl font-light">06</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-mono text-[10px] text-primary uppercase tracking-widest mb-1">Light Side</span>
+<span class="text-3xl font-light">12</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-mono text-[10px] text-primary uppercase tracking-widest mb-1">Dark Side</span>
+<span class="text-3xl font-light">12</span>
+</div>
+</div>
+</div>
+</section>
+<!-- FILTER BAR -->
+<div class="sticky top-[81px] z-40 bg-white/80 backdrop-blur-sm px-6 lg:px-20 py-8 border-b border-slate-50">
+<div class="max-w-[1600px] mx-auto flex flex-wrap items-center justify-between gap-8">
+<div class="flex flex-wrap items-center gap-8">
+<button class="small-caps text-xs font-semibold border-b border-primary pb-1">All</button>
+<button class="small-caps text-xs text-museum-gray hover:text-museum-dark transition-colors pb-1 border-b border-transparent">Original Trilogy</button>
+<button class="small-caps text-xs text-museum-gray hover:text-museum-dark transition-colors pb-1 border-b border-transparent">Prequel</button>
+<button class="small-caps text-xs text-museum-gray hover:text-museum-dark transition-colors pb-1 border-b border-transparent">Sequel</button>
+<button class="small-caps text-xs text-museum-gray hover:text-museum-dark transition-colors pb-1 border-b border-transparent">The Mandalorian</button>
+<button class="small-caps text-xs text-museum-gray hover:text-museum-dark transition-colors pb-1 border-b border-transparent">Clone Wars</button>
+</div>
+<div class="flex items-center gap-10">
+<div class="flex items-center gap-4 bg-slate-50 p-1">
+<button class="small-caps text-[10px] px-4 py-1.5 bg-white shadow-sm font-bold">Light Side</button>
+<button class="small-caps text-[10px] px-4 py-1.5 text-museum-gray hover:text-museum-dark transition-colors">Dark Side</button>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-museum-gray text-lg group-focus-within:text-primary transition-colors">search</span>
+<input class="pl-8 bg-transparent border-0 border-b border-slate-200 focus:ring-0 focus:border-primary small-caps text-[10px] w-48 placeholder:text-museum-gray transition-all" placeholder="SEARCH COLLECTION" type="text"/>
+</div>
+</div>
+</div>
+</div>
+<!-- HELMET GRID -->
+<main class="px-6 lg:px-20 py-20">
+<div class="max-w-[1600px] mx-auto">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-px bg-slate-100 border border-slate-100">
+<!-- HELMET CARD 1 -->
+<div class="bg-white p-10 flex flex-col items-center group relative transition-all duration-500 hover:z-10 hover:shadow-2xl">
+<div class="w-full aspect-square mb-8 overflow-hidden">
+<img class="w-full h-full object-contain grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="LEGO Star Wars Darth Vader helmet against white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMtnv1DmwJz7x4Rq89M2swDSsShTdluEhPs8ntPtZ1nOmvZ_yxlePVCgxtLYCbQMkKVepa8oNBFFg1zHjk_UiADWGCvnvzKDrc6XN2ovUHJ2V52M2T670HswLr_WeK04CImhD0jkqV4EsW9QbwNiElV93GWaP1juygjWA7dfStGezCgnG5xlh22zh9MiMHZciOurq76L9Jcm2PeuEWpjD3SMAK5ycbRYklzhacLEzqZlKUz8XsDfR6LVkdMKdJKtj0kYmLu9fK2p0"/>
+</div>
+<div class="text-center w-full">
+<span class="font-mono text-[10px] text-primary tracking-tighter mb-1 block">SET 75304</span>
+<h3 class="small-caps text-sm font-medium tracking-widest text-museum-dark">Darth Vader</h3>
+<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="text-[10px] small-caps border-b border-primary py-1 hover:text-primary">View Details</button>
+</div>
+</div>
+<div class="absolute inset-0 border border-transparent group-hover:border-primary transition-colors pointer-events-none"></div>
+</div>
+<!-- HELMET CARD 2 -->
+<div class="bg-white p-10 flex flex-col items-center group relative transition-all duration-500 hover:z-10 hover:shadow-2xl">
+<div class="w-full aspect-square mb-8 overflow-hidden">
+<img class="w-full h-full object-contain grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="LEGO Star Wars Luke Skywalker Red Five helmet on white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZBoqUECzbuCubCLiELGjnneBlLUjZMQKijM3y7o_vAHeXIWkpJd2X4AQdf3B5aDyH5NyHXpY6-97qs1VnEQ3lIHkCMzTqBZbmdH4scb35qbip5_uxdwyH_PNIY1Vw6E8Ltg3yTzTOL35hPFMSiGFwiDZ82TViiYK4Hrp5YYoDk3wphzamej9rTnEXxjXCQgtRD_A6k_ofq99vVYINYomgKUXrQ1hDtDYjw3E6Cq3cbMg9BOZhttE8QNjapIIYKHHRrXPNBG1AZus"/>
+</div>
+<div class="text-center w-full">
+<span class="font-mono text-[10px] text-primary tracking-tighter mb-1 block">SET 75327</span>
+<h3 class="small-caps text-sm font-medium tracking-widest text-museum-dark">Red Five</h3>
+<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="text-[10px] small-caps border-b border-primary py-1 hover:text-primary">View Details</button>
+</div>
+</div>
+<div class="absolute inset-0 border border-transparent group-hover:border-primary transition-colors pointer-events-none"></div>
+</div>
+<!-- HELMET CARD 3 -->
+<div class="bg-white p-10 flex flex-col items-center group relative transition-all duration-500 hover:z-10 hover:shadow-2xl">
+<div class="w-full aspect-square mb-8 overflow-hidden">
+<img class="w-full h-full object-contain grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="LEGO Star Wars Boba Fett helmet on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6ch5KGIEnI09LU8OpgYQKsvghQ3K0hZU3yJ6ufumAPbrwtDD06U5lJ3_AE1Bia6-3kwy24RxRGQ-tagtMY7XiqtaDucpJGhvQ3_nd_Mkdk5Cpoe0jPcY_l5H2BXocIwb1tbVDtndlGyyIxvTau1FVX4aTvI7SyVtNz0Hwq5TTv1-qFpby3VzwSk7Dmrv0aeMWaVPlYXE5cUwO_J4j8rnZwFmSvmqzEAAl3rqfM7FKUoVMWmuPHqyxXdQmSjmW6Tyjp83J_i4ceeI"/>
+</div>
+<div class="text-center w-full">
+<span class="font-mono text-[10px] text-primary tracking-tighter mb-1 block">SET 75277</span>
+<h3 class="small-caps text-sm font-medium tracking-widest text-museum-dark">Boba Fett</h3>
+<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="text-[10px] small-caps border-b border-primary py-1 hover:text-primary">View Details</button>
+</div>
+</div>
+<div class="absolute inset-0 border border-transparent group-hover:border-primary transition-colors pointer-events-none"></div>
+</div>
+<!-- HELMET CARD 4 -->
+<div class="bg-white p-10 flex flex-col items-center group relative transition-all duration-500 hover:z-10 hover:shadow-2xl">
+<div class="w-full aspect-square mb-8 overflow-hidden">
+<img class="w-full h-full object-contain grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="LEGO Star Wars Stormtrooper helmet on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCZ__T_ZQDrye2jTfm9nBIeD-15bMdFKfUWpi4WAp1UkKlPzfbRb4OsIMA3arit-RY3QodbYBoOzVZ8V2nAJUP53Neeq6z-d12ExfKN1fjAXVvHPsoCMjyJBLp0CUPM39z5LMUY6hZ6sBo34EUqSu8VVKTWdBCZgqSSXGtcTWCYapNb-wqsmGGZ5v57iN9Sy0AfykD3m4pjb5tO6CI9Xx6p0Cpe-UN8-lh4rIVC6SAPxrbtJEzE-PXoi537_aLz3iaJcxs10c6QKs"/>
+</div>
+<div class="text-center w-full">
+<span class="font-mono text-[10px] text-primary tracking-tighter mb-1 block">SET 75276</span>
+<h3 class="small-caps text-sm font-medium tracking-widest text-museum-dark">Stormtrooper</h3>
+<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="text-[10px] small-caps border-b border-primary py-1 hover:text-primary">View Details</button>
+</div>
+</div>
+<div class="absolute inset-0 border border-transparent group-hover:border-primary transition-colors pointer-events-none"></div>
+</div>
+<!-- HELMET CARD 5 -->
+<div class="bg-white p-10 flex flex-col items-center group relative transition-all duration-500 hover:z-10 hover:shadow-2xl">
+<div class="w-full aspect-square mb-8 overflow-hidden">
+<img class="w-full h-full object-contain grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="LEGO Star Wars Mandalorian helmet on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6YbUNQJBTIDmlPmMbSVkUwDvtXbB5UyhxnvtldpzHkMk0kiKitzQNv2OHSfCr2xJugeeuSibYTZXzpcWqGUT1ZriTg5RiOqD5jk77tnFwezoAqNM2Q9xQH1rZKpu4i7CfZ9MnXgdYlb5o-xTimHuWSgB2ywH_RkDJ_id_Q4gvqmzVemMR7bnzPflwFY6nG4r0mw8m9bgqYy4do2JkVbrH8-SLXhMG6yJmCU3JUlSn2_ZhHARHoHfc3V2vKG9aIyXxBDDEfWAZkJw"/>
+</div>
+<div class="text-center w-full">
+<span class="font-mono text-[10px] text-primary tracking-tighter mb-1 block">SET 75328</span>
+<h3 class="small-caps text-sm font-medium tracking-widest text-museum-dark">The Mandalorian</h3>
+<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="text-[10px] small-caps border-b border-primary py-1 hover:text-primary">View Details</button>
+</div>
+</div>
+<div class="absolute inset-0 border border-transparent group-hover:border-primary transition-colors pointer-events-none"></div>
+</div>
+<!-- HELMET CARD 6 (Row 2 Start) -->
+<div class="bg-white p-10 flex flex-col items-center group relative transition-all duration-500 hover:z-10 hover:shadow-2xl">
+<div class="w-full aspect-square mb-8 overflow-hidden">
+<img class="w-full h-full object-contain grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="LEGO Star Wars Scout Trooper helmet on white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI7i7n5FXXFeN6_N-NMgYQWSbNnyTSRaugj4nvTS5RqpOlRyjqWxlkGfQsK6gXJFkXBmT9upVk9ctMLvMTY9cHOCRQRppvACf1KWIO91Kq6hWq4hEvTxhvbeuIeJ6JIA1nEuIWPqz4D_0QRnP4fS9yCiTe2o0LBMHxSiQvlUHn2-H8FkXlH0pCiViWVURsGlxDAem5aarV8ZbKSTbYjWWhCN_PDmsnwFQgk2g_gipXFjw6dWh5JLQ85n6JT3PkK0fQA6tsZFDQoA0"/>
+</div>
+<div class="text-center w-full">
+<span class="font-mono text-[10px] text-primary tracking-tighter mb-1 block">SET 75305</span>
+<h3 class="small-caps text-sm font-medium tracking-widest text-museum-dark">Scout Trooper</h3>
+<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="text-[10px] small-caps border-b border-primary py-1 hover:text-primary">View Details</button>
+</div>
+</div>
+<div class="absolute inset-0 border border-transparent group-hover:border-primary transition-colors pointer-events-none"></div>
+</div>
+<!-- HELMET CARD 7 -->
+<div class="bg-white p-10 flex flex-col items-center group relative transition-all duration-500 hover:z-10 hover:shadow-2xl">
+<div class="w-full aspect-square mb-8 overflow-hidden">
+<img class="w-full h-full object-contain grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="LEGO Star Wars Captain Rex helmet on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJYs1JARP6m6vgapAi2WgUZAKgvIdpYaj3X01I6AUHY8WCh8X2fNidfra0HUCFUJjlHuPcmEWYxMUUptNS1pzNL63TsUifDp9JuZQRf-FD2f428OWvJE9vV1OgO1NEGYP-PlPpKOFEQER8kiIWHYIcaGH66G1-6OuKVNqL__MEcccdZ8fBeju5lzpkRxBQqNpNyUPmKOC62SLDG0FtYMxlcbfR4IactADcWHYYjxsf99v34bN98PckSqwVgdgtHYigxvaoGqDTZsM"/>
+</div>
+<div class="text-center w-full">
+<span class="font-mono text-[10px] text-primary tracking-tighter mb-1 block">SET 75349</span>
+<h3 class="small-caps text-sm font-medium tracking-widest text-museum-dark">Captain Rex</h3>
+<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="text-[10px] small-caps border-b border-primary py-1 hover:text-primary">View Details</button>
+</div>
+</div>
+<div class="absolute inset-0 border border-transparent group-hover:border-primary transition-colors pointer-events-none"></div>
+</div>
+<!-- HELMET CARD 8 -->
+<div class="bg-white p-10 flex flex-col items-center group relative transition-all duration-500 hover:z-10 hover:shadow-2xl">
+<div class="w-full aspect-square mb-8 overflow-hidden">
+<img class="w-full h-full object-contain grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="LEGO Star Wars Clone Commander Cody helmet" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChPcRJKR7FaigwiiEhA6Q18dvJvwbk3W8SpW1BheBClbnL4-rpfRmk6JVXrNMW2nEVbP_3H_3mGK859Mfcew2sJv6C3OX_Y3gFOe0bII1cu6YfZA6804tpTPog3AJvPjtsbhN6w1A6tb7RQQY0gyzlmgF66ojxcK825JEKIv3MnsIvY1o2k4EdlNcamKVnxPafHTt7t1h4agBDb1vRCheFK2CNwFUMRiw9Hmfjy9Qvpc5KDiFyj2NoTb-eq5RjebFMo2Z6Bocn1UI"/>
+</div>
+<div class="text-center w-full">
+<span class="font-mono text-[10px] text-primary tracking-tighter mb-1 block">SET 75350</span>
+<h3 class="small-caps text-sm font-medium tracking-widest text-museum-dark">Commander Cody</h3>
+<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="text-[10px] small-caps border-b border-primary py-1 hover:text-primary">View Details</button>
+</div>
+</div>
+<div class="absolute inset-0 border border-transparent group-hover:border-primary transition-colors pointer-events-none"></div>
+</div>
+<!-- HELMET CARD 9 -->
+<div class="bg-white p-10 flex flex-col items-center group relative transition-all duration-500 hover:z-10 hover:shadow-2xl">
+<div class="w-full aspect-square mb-8 overflow-hidden">
+<img class="w-full h-full object-contain grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="LEGO Star Wars Dark Trooper helmet" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBG8FQ_KOHfsYqJpSv2iqcYl2MoEosMmi4-f0fyGwfiuz7GupZcLfKD4m6pbyUm_fBNULnPqV0kx3NAwJA77cN00U0jGe16-K9hZicQxe4B8A1eMSH0mdrF80FllpoqxazAz0LqME_mP5w-TOKRZ_NtNI7pXgZuxxqhaE63nYvpb294zL-C7bji54Je7edtp5WBry64F452SDq7Vu0nQkbuScB0Szy-JsA_ocqBU66bAqpeCtmG1AudrDU5k6p0M-tgB3-_RvNWnZc"/>
+</div>
+<div class="text-center w-full">
+<span class="font-mono text-[10px] text-primary tracking-tighter mb-1 block">SET 75343</span>
+<h3 class="small-caps text-sm font-medium tracking-widest text-museum-dark">Dark Trooper</h3>
+<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="text-[10px] small-caps border-b border-primary py-1 hover:text-primary">View Details</button>
+</div>
+</div>
+<div class="absolute inset-0 border border-transparent group-hover:border-primary transition-colors pointer-events-none"></div>
+</div>
+<!-- HELMET CARD 10 -->
+<div class="bg-white p-10 flex flex-col items-center group relative transition-all duration-500 hover:z-10 hover:shadow-2xl">
+<div class="w-full aspect-square mb-8 overflow-hidden">
+<img class="w-full h-full object-contain grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="LEGO Star Wars Princess Leia Boushh helmet" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOsYtxKk4jYt_QTra9BeUAG3RX55EOqklOWDiqg2Uy6U7gh933OtllKA94Kj_irQTIjozcnxc5F_xIQFi6CL0SFmKIFzw9kxWo9qgrWS9r60P9xtsPQ_mKumtqZQsl38BuzKBf-yc45f5tilAaSc2UHVGIvrCxM0KMM71d-BSJw9BNtpo0W2gBpfQoSQl1niLkFYIhga-GyIktYe2oR3Tkc46r96vG0GB9goXnvAWdVAOf7U4XRLQe2xNvuXHCr24VjTzTtrhetrk"/>
+</div>
+<div class="text-center w-full">
+<span class="font-mono text-[10px] text-primary tracking-tighter mb-1 block">SET 75351</span>
+<h3 class="small-caps text-sm font-medium tracking-widest text-museum-dark">Boushh Leia</h3>
+<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="text-[10px] small-caps border-b border-primary py-1 hover:text-primary">View Details</button>
+</div>
+</div>
+<div class="absolute inset-0 border border-transparent group-hover:border-primary transition-colors pointer-events-none"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- FOOTER -->
+<footer class="py-20 px-6 lg:px-20 border-t border-slate-100">
+<div class="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+<div class="max-w-md">
+<h4 class="font-serif text-xl mb-6 italic">Exhibition Statement</h4>
+<p class="text-museum-gray text-sm leading-relaxed font-light">
+                    This curated digital archive serves as a permanent record of the LEGO Star Wars Helmet Collection. Each piece has been documented to capture the interplay of form, texture, and cultural iconography within the medium of ABS plastic.
+                </p>
+</div>
+<div class="flex gap-20">
+<div>
+<h5 class="small-caps text-[10px] font-bold text-primary mb-6">Archive</h5>
+<ul class="space-y-4">
+<li><a class="text-xs text-museum-gray hover:text-museum-dark small-caps" href="#">Catalogue</a></li>
+<li><a class="text-xs text-museum-gray hover:text-museum-dark small-caps" href="#">New Arrivals</a></li>
+<li><a class="text-xs text-museum-gray hover:text-museum-dark small-caps" href="#">Chronology</a></li>
+</ul>
+</div>
+<div>
+<h5 class="small-caps text-[10px] font-bold text-primary mb-6">Inquiries</h5>
+<ul class="space-y-4">
+<li><a class="text-xs text-museum-gray hover:text-museum-dark small-caps" href="#">Collection Access</a></li>
+<li><a class="text-xs text-museum-gray hover:text-museum-dark small-caps" href="#">Authenticity</a></li>
+<li><a class="text-xs text-museum-gray hover:text-museum-dark small-caps" href="#">Curation</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-[1600px] mx-auto mt-20 pt-8 border-t border-slate-50 flex justify-between items-center">
+<span class="text-[10px] text-museum-gray small-caps">© 2024 THE ARCHIVES — LEGO STAR WARS</span>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-lg text-museum-gray hover:text-primary cursor-pointer">share</span>
+<span class="material-symbols-outlined text-lg text-museum-gray hover:text-primary cursor-pointer">bookmark</span>
+</div>
+</div>
+</footer>
+</body></html>

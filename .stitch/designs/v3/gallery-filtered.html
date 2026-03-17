@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@600&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c9a74a",
+                        "background-light": "#ffffff",
+                        "background-dark": "#1a1a1a",
+                        "charcoal": "#1a1a1a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .small-caps { font-variant: all-small-caps; }
+        .thin-gold-border { border: 1px solid #c9a74a; }
+    </style>
+</head>
+<body class="bg-background-light text-charcoal font-display antialiased">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white border-b border-primary/30 px-6 md:px-12 lg:px-24 py-4">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl">stat_3</span>
+<h1 class="font-serif text-xl tracking-widest uppercase text-charcoal">Helmet Collection</h1>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-[11px] font-semibold tracking-[0.2em] uppercase hover:text-primary transition-colors" href="#">Archive</a>
+<a class="text-[11px] font-semibold tracking-[0.2em] uppercase hover:text-primary transition-colors" href="#">Curated</a>
+<a class="text-[11px] font-semibold tracking-[0.2em] uppercase hover:text-primary transition-colors" href="#">About</a>
+<div class="flex items-center gap-6 ml-4">
+<button class="material-symbols-outlined text-[20px] text-charcoal hover:text-primary transition-colors">search</button>
+<button class="material-symbols-outlined text-[20px] text-charcoal hover:text-primary transition-colors">shopping_bag</button>
+</div>
+</nav>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-12">
+<!-- Filter Bar Section -->
+<div class="flex flex-col gap-8 mb-16">
+<div class="flex flex-wrap items-center justify-between gap-6 border-b border-slate-100 pb-6">
+<div class="flex gap-8 overflow-x-auto no-scrollbar py-2">
+<button class="text-[11px] font-bold tracking-[0.15em] uppercase border-b-2 border-primary pb-1">Original Trilogy</button>
+<button class="text-[11px] font-bold tracking-[0.15em] uppercase text-slate-400 hover:text-charcoal transition-colors pb-1">Prequel Trilogy</button>
+<button class="text-[11px] font-bold tracking-[0.15em] uppercase text-slate-400 hover:text-charcoal transition-colors pb-1">Mandalorian</button>
+<button class="flex items-center gap-2 px-4 py-1.5 thin-gold-border rounded-full text-[10px] font-bold tracking-widest uppercase bg-primary/5">
+<span class="material-symbols-outlined text-sm">brightness_2</span>
+                        Dark Side
+                    </button>
+</div>
+<div class="relative flex-1 max-w-md">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="w-full bg-slate-50 border-none rounded-lg pl-10 pr-10 py-2.5 text-sm focus:ring-1 focus:ring-primary/50 text-charcoal font-medium" type="text" value="Darth"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 text-lg hover:text-charcoal">close</button>
+</div>
+</div>
+<!-- Active Chips -->
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-wrap gap-3">
+<div class="flex items-center gap-2 px-3 py-1 thin-gold-border text-[10px] font-bold tracking-wider uppercase bg-white">
+                        Original Trilogy <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 thin-gold-border text-[10px] font-bold tracking-wider uppercase bg-white">
+                        Dark Side <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 thin-gold-border text-[10px] font-bold tracking-wider uppercase bg-white">
+                        Darth <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</div>
+</div>
+<button class="text-[11px] text-slate-400 hover:text-primary underline underline-offset-4 transition-colors">Clear all</button>
+</div>
+</div>
+<!-- Results Header -->
+<div class="flex items-center justify-between mb-12">
+<p class="text-[11px] text-slate-400 uppercase tracking-widest">Showing 3 of 24 helmets</p>
+<div class="flex items-center gap-4 text-slate-300">
+<button class="material-symbols-outlined text-[20px] text-charcoal">grid_view</button>
+<button class="material-symbols-outlined text-[20px] hover:text-charcoal">view_list</button>
+</div>
+</div>
+<!-- Filtered Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20">
+<!-- Card 1 (Hover state mock) -->
+<div class="group cursor-pointer p-4 thin-gold-border transition-all bg-white">
+<div class="aspect-[4/5] bg-slate-50 mb-6 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="LEGO Darth Vader Helmet display on black background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB70VizZlh3GhLLQSRknTSRscbTGoocIACNXfZejgzJAqRnT3gTt2Ndam1O8GbsSN291-8GSocr5KZ3J3yTgVTgKgyck3MlIwHvGKF1v297KrlNXjcbKo8zUJU592aob2a2IEKunU2Vf_iH8rY0K6V8t0-qvfcy7ARvxBvPxtkFRsXKXg6XPFAgzTsMeNLO4irbDbmoKsmRoVoWqWiwoKjTBBoAUm6--pNPHDdQi7TGWUR-voVWyedCgFS0ENQ8oJuyp6t5q_wT0cs"/>
+</div>
+<div class="space-y-1 text-center">
+<h3 class="small-caps text-lg tracking-widest font-medium">Darth Vader™ Helmet</h3>
+<div class="flex items-center justify-center gap-3">
+<span class="font-mono text-[9px] text-primary tracking-tighter">SET 75304</span>
+<span class="text-[9px] text-slate-400 uppercase tracking-tighter">2021 Collection</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group cursor-pointer p-4 border border-transparent hover:border-slate-100 transition-all bg-white">
+<div class="aspect-[4/5] bg-slate-50 mb-6 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="LEGO TIE Fighter Pilot Helmet collectible" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlunbiJ2SgzkkrZ9z4ctd15QcwhUVXrUAZlrjQRkMqvhYcrqd9Rt0gNEuyPL0lkU7GhREX0OubTo4hlXUmD9-D0yxVPnKGb2OgdmqI38UXUuEeS2SRbe_M0FoSK5qqVotqkXrLB0b9BwaOIw37waWzRx09PP2dXczeOMKl-knFrGQ6_i3o0m7HHCeOG3L6C6HJkYKmwWw1mAxas4izBiyNvSs7oFiDpzZsG1YdNoRXXeEuWcAkBTwPbrmSNhsVVpAYyxPrBl1iGZs"/>
+</div>
+<div class="space-y-1 text-center">
+<h3 class="small-caps text-lg tracking-widest font-medium">TIE Fighter Pilot™</h3>
+<div class="flex items-center justify-center gap-3">
+<span class="font-mono text-[9px] text-primary tracking-tighter">SET 75274</span>
+<span class="text-[9px] text-slate-400 uppercase tracking-tighter">2020 Collection</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group cursor-pointer p-4 border border-transparent hover:border-slate-100 transition-all bg-white">
+<div class="aspect-[4/5] bg-slate-50 mb-6 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="LEGO Dark Trooper Helmet detailed build" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqv8qhGXNocvRiu-QT1Sl9kafiVHzuMi6eG-G8XTFxdCtOb3ESqymTsrMuoH5thLvQnGD3rx6DQab1Bp-w4kXmYqANXNhu2aECVm2I7gTDtwkw5sOvtdyTOcrvKmbgFZ-usnRJO6hVCXud4cRMAmp3aRMGeNJqorKpxgRdOxxKtfd1XCfwL-meRG0i1Ah8yMGVVzajk7WXPJx6dgKaB3ToAguu_kRsFU596rBjy9lwxRHzaz9NiRz1mx7LseBWnDmp-UaswIza-ec"/>
+</div>
+<div class="space-y-1 text-center">
+<h3 class="small-caps text-lg tracking-widest font-medium">Dark Trooper™ Helmet</h3>
+<div class="flex items-center justify-center gap-3">
+<span class="font-mono text-[9px] text-primary tracking-tighter">SET 75343</span>
+<span class="text-[9px] text-slate-400 uppercase tracking-tighter">2022 Collection</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty surrounding space simulation -->
+<div class="h-48"></div>
+</main>
+<footer class="border-t border-slate-50 py-16 px-6 md:px-12 lg:px-24">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="font-serif text-sm tracking-widest text-slate-300">© 2024 CURATED ARCHIVE</div>
+<div class="flex gap-8">
+<a class="text-[10px] font-bold tracking-widest text-slate-400 hover:text-primary uppercase" href="#">Instagram</a>
+<a class="text-[10px] font-bold tracking-widest text-slate-400 hover:text-primary uppercase" href="#">Newsletter</a>
+<a class="text-[10px] font-bold tracking-widest text-slate-400 hover:text-primary uppercase" href="#">Terms</a>
+</div>
+</div>
+</footer>
+</body></html>

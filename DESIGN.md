@@ -1,587 +1,791 @@
 # DESIGN.md — Lego Star Wars Helmets
-> Design System **v2.0** — Refonte UX Cinématique 2024
-> Mis à jour le 2026-03-17 par UX Designer (ux-vision pipeline)
+> Design System **v3.0** — White Gallery Luxe
+> Généré le 2026-03-17 par UX Designer (ux-vision pipeline)
+> Maquettes Stitch : `.stitch/designs/v3/` (3 écrans haute-fidélité)
 
 ---
 
-## 🎯 Direction Artistique
+## 🎯 Direction Artistique v3
 
-### Inspiration dominante : **Fusion Cinématique des Séries Récentes**
+### Concept : **White Gallery Luxe — Musée d'Art Contemporain**
 
-Le site fusionne l'esthétique de quatre univers visuels récents pour créer une expérience **premium, immersive et gritty** :
+**Rupture radicale avec le v2.** Fini le fond spatial noir, les nébuleuses, les lueurs néon. Place à une esthétique que personne n'attend pour un site Star Wars : le blanc immaculé d'une galerie d'art premium.
 
-| Influence | Apport visuel | Utilisation |
+| Référence | Apport visuel | Utilisation |
 |-----------|--------------|-------------|
-| **The Mandalorian** | Beskar métal brossé, chrome mat, western spatial | Fond principal, matière des cards |
-| **Andor** | Gris acier industriel, bleu impérial froid, ambiance rebelle adulte | Filtres, barres d'info, accent Obscur |
-| **Ahsoka** | Cosmique blanc/bleu mystique, brumes galactiques | Côté Lumineux, hero glow |
-| **The Acolyte** | Violet/rouge sombre, particules de Force noire | Côté Obscur, particles, CTA |
+| **Sotheby's / Christie's** | Typographie éditoriale, espace vide aristocratique | Hero, layout général |
+| **Leica Gallery** | Blanc parfait, photos comme œuvres, sobre | Cards, modal détail |
+| **MoMA Store** | Grilles propres, metadata précise, sans-serif clinique | Filtres, specs grid |
+| **Phaidon (livres d'art)** | Serif classique + grotesque moderne, mise en page respirante | Typographie mixte |
 
-**Mood global** : Cinéma de science-fiction premium — sombre, profond, avec des reflets métalliques froids. Chaque casque est traité comme une **pièce de collection muséale** dans une vitrine galactique.
+**Justification :** Les casques Star Wars Lego sont de vraies pièces de collection — certaines valent plusieurs centaines d'euros en édition limitée. Les traiter comme des œuvres d'art exposées dans une galerie blanche leur donne une **dignité visuelle** qu'aucun fond sombre ne peut offrir. Le contraste avec les attentes est un outil de mémorisation : ce site *surprend* avant de convaincre.
 
-**v2 — Évolution** : De galerie passive → **expérience de collection interactive**. L'utilisateur peut explorer, filtrer, et découvrir chaque casque dans son contexte narratif.
+**Mot clé v3 :** *Provenance*. Chaque casque est présenté avec la rigueur documentaire d'une fiche d'œuvre de musée.
 
 ---
 
-## 🎨 Palette de Couleurs
+## 🎨 Palette de Couleurs v3
 
 ### Fondations
 
 ```css
---color-void:       #060810;  /* Fond principal — espace profond */
---color-deep-space: #0b0f1a;  /* Fond secondaire — couche 2 */
---color-nebula:     #111827;  /* Fond cards — couche 3 */
---color-steel:      #1c2535;  /* Surfaces élevées — glassmorphism */
---color-chrome:     #252f42;  /* Borders, séparateurs */
+/* Surfaces */
+--color-white:          #FFFFFF;   /* Fond principal — blanc muséal pur */
+--color-ivory:          #FAFAF8;   /* Fond alternatif — ivoire chaud */
+--color-cream:          #F5F4F1;   /* Fond section, backdrop modal */
+--color-smoke:          #EBEBEB;   /* Bordures légères, séparateurs */
+--color-mist:           #E5E7EB;   /* Bordures standard */
 ```
 
 ### Texte
 
 ```css
---color-text-primary:   #e8eaf0;  /* Blanc beskar — titres */
---color-text-secondary: #8892a4;  /* Gris holographique — body text */
---color-text-muted:     #4a5568;  /* Muted — labels, meta */
+--color-text-primary:   #1A1A1A;   /* Charbon profond — titres, corps */
+--color-text-secondary: #6B7280;   /* Gris moyen — subtitles, labels */
+--color-text-muted:     #9CA3AF;   /* Gris clair — metadata, tags */
+--color-text-ghost:     #D1D5DB;   /* Gris fantôme — placeholder */
 ```
 
-### Accents — Côtés de la Force
+### Accents Gold
 
 ```css
-/* ⚡ Côté Lumineux (Ahsoka / Jedi) */
---color-light-primary:  #4fc3f7;  /* Bleu Force — ciel d'Ahsoka */
---color-light-glow:     rgba(79, 195, 247, 0.25);
---color-light-soft:     rgba(79, 195, 247, 0.12);
-
-/* 🔴 Côté Obscur (The Acolyte / Sith) */
---color-dark-primary:   #e53935;  /* Rouge Sith */
---color-dark-purple:    #7b1fa2;  /* Violet Force noire */
---color-dark-glow:      #d32f2f;  /* Glow obscur */
---color-dark-soft:      rgba(229, 57, 53, 0.12);
-
-/* Chrome Mandalorian */
---color-chrome-light:   #b0bec5;  /* Beskar clair */
---color-chrome-mid:     #78909c;  /* Beskar medium */
+--color-gold:           #C9A84C;   /* Or chaud — accent principal, règles */
+--color-gold-light:     #E8C97A;   /* Or clair — hover states */
+--color-gold-dim:       rgba(201, 168, 76, 0.15); /* Or translucide — backgrounds */
+--color-gold-border:    rgba(201, 168, 76, 0.4);  /* Or bordure */
 ```
 
-### v2 — Nouveaux tokens
+### Côtés de la Force (v3 — subtils)
 
 ```css
-/* Or Galactique — accentuation premium, badges, séparateurs */
---color-gold-accent:    #c8a84b;
+/* ⚡ Côté Lumineux — bleu acier froid vs bleu électrique v2 */
+--color-light:          #2D6EA8;   /* Bleu acier — sobre, classe */
+--color-light-soft:     rgba(45, 110, 168, 0.08);
+--color-light-border:   rgba(45, 110, 168, 0.25);
 
-/* Surface hover subtile */
---color-surface-hover:  rgba(255, 255, 255, 0.04);
-
-/* Border glow interactive */
---color-border-glow:    rgba(79, 195, 247, 0.3);
+/* 🔴 Côté Obscur — bordeaux vieilli vs rouge Sith criard v2 */
+--color-dark:           #8B0000;   /* Bordeaux profond — viril, contenu */
+--color-dark-soft:      rgba(139, 0, 0, 0.06);
+--color-dark-border:    rgba(139, 0, 0, 0.2);
 ```
 
-### Accents par Série
+### Accents par Série (v3 — pastels sophistiqués)
 
 ```css
---series-original:      #ffd54f;  /* Or Empire / Rébellion */
---series-prequel:       #66bb6a;  /* Vert Jedi / Gungan */
---series-sequel:        #ef5350;  /* Rouge Premier Ordre */
---series-mando:         #90a4ae;  /* Beskar Mandalorian */
---series-clone-wars:    #26c6da;  /* Bleu République */
---series-divers:        #9e9e9e;  /* Gris neutre */
+--series-original:      #B8860B;   /* Or antique — Trilogie Originale */
+--series-prequel:       #2E7D32;   /* Vert sauge — Prélogie */
+--series-sequel:        #37474F;   /* Acier bleuté — Sequel */
+--series-mando:         #5D4037;   /* Bronze cuivré — Mandalorian */
+--series-clone-wars:    #0277BD;   /* Bleu République — Clone Wars */
+--series-divers:        #616161;   /* Gris neutre — Divers */
 ```
 
 ---
 
-## ✏️ Typographie
+## ✏️ Typographie v3
 
 ### Familles
 
 ```css
---font-display:  'Orbitron', 'Rajdhani', sans-serif;  /* Titres — SF militaire */
---font-body:     'Inter', 'DM Sans', sans-serif;      /* Corps — lisibilité premium */
---font-mono:     'JetBrains Mono', 'Fira Code', monospace; /* Set numbers, codes */
+--font-serif:    'Playfair Display', 'Cormorant Garamond', Georgia, serif; /* Titres — noblesse */
+--font-body:     'Inter', 'DM Sans', system-ui, sans-serif;               /* Corps — lisibilité */
+--font-mono:     'JetBrains Mono', 'Fira Code', monospace;                /* Set numbers — précision */
 ```
 
-### Échelle typographique
+> Import Google Fonts :
+> `@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');`
 
-| Rôle | Font | Taille | Poids | Letter-spacing |
-|------|------|--------|-------|----------------|
-| Hero Title | Orbitron | `clamp(3rem, 8vw, 6rem)` | 800 | `0.08em` |
-| Hero Subtitle | Inter | `clamp(1rem, 2.5vw, 1.25rem)` | 400 | `0.1em` |
-| Hero Stat Value | JetBrains Mono | `1.5rem` | 600 | — |
-| Section Header | Orbitron | `1.5rem` | 700 | `0.08em` |
-| Modal Title | Orbitron | `1.6rem` | 700 | `0.04em` |
-| Card Title | Orbitron | `0.82rem` | 600 | `0.04em` |
-| Card Meta | Inter | `0.68rem` | 400 | `0.02em` |
-| Filter Label | Inter | `0.72rem` | 600 | `0.06em` |
-| Spec Label | Inter | `0.62rem` | 600 | `0.1em` uppercase |
-| Spec Value | JetBrains Mono | `0.82rem` | 600 | — |
-| Footer | Inter | `0.8rem` | 400 | `0.03em` |
+### Échelle typographique v3
+
+| Rôle | Font | Taille | Poids | Letter-spacing | Note |
+|------|------|--------|-------|----------------|------|
+| Hero Title | Playfair Display | `clamp(3.5rem, 7vw, 5.5rem)` | 300 | `0.02em` | Léger, élégant |
+| Hero Subtitle | Inter | `0.85rem` | 400 | `0.2em` | Uppercase, tracé |
+| Hero Stats | JetBrains Mono | `1.4rem` | 400 | — | Chiffres précis |
+| Nav Brand | Playfair Display | `1.1rem` | 400 | `0.05em` | |
+| Nav Links | Inter | `0.72rem` | 500 | `0.12em` | Small caps |
+| Section Header | Inter | `0.65rem` | 600 | `0.2em` | Uppercase tracé |
+| Card Name | Inter | `0.78rem` | 600 | `0.06em` | Small caps |
+| Card Meta | Inter | `0.65rem` | 400 | `0.02em` | Gray |
+| Card Set# | JetBrains Mono | `0.6rem` | 400 | — | Gold muted |
+| Filter Label | Inter | `0.68rem` | 500 | `0.1em` | Uppercase |
+| Modal Title | Playfair Display | `2rem` | 400 | `0.01em` | Serif classique |
+| Spec Label | Inter | `0.58rem` | 600 | `0.15em` | Uppercase, gray |
+| Spec Value | Inter | `0.78rem` | 600 | — | Charcoal |
+| Description | Playfair Display | `0.9rem` | 400 | — | Italic, prose |
+| Footer | Inter | `0.7rem` | 400 | `0.05em` | Centered |
 
 ---
 
-## 🏗️ Composants Détaillés — v2
+## 🏗️ Composants Clés v3
 
-### 1. Hero Section (v2)
-
-**Changements v2 :**
-- Hauteur réduite : `72vh` (vs `100vh` v1) — moins d'espace perdu, reach de la collection plus rapide
-- Stats numériques visibles : 4 compteurs (casques, séries, lumineux, obscur)
-- Badge "Édition 2024" en gold
-- Casque flottant animé en décoration droite (illustratif)
-
-```
-┌─────────────────────────────────────────────────────┐
-│  [Nébuleuses bg — dark gauche, light droite]        │
-│                                                     │
-│  [Badge ✦ 24 casques · Collection 2024]            │  ← v2
-│  [Logo micro]                                       │
-│                                                     │
-│    HELMET                                           │        🪖
-│    COLLECTION                                       │      (float)
-│                                                     │
-│  [24 Casques] | [6 Séries] | [12 Obscur] | [12 Lum]│  ← v2
-│                                                     │
-│    [ ▼  Explorer la collection ]                    │
-└─────────────────────────────────────────────────────┘
-```
-
-### 2. Barre de Filtres Sticky Glassmorphism (v2)
-
-**Changements v2 :**
-- **Sort dropdown** ajouté (par nom, année ↑↓, série)
-- **Bouton clear** sur l'input search
-- **Dots colorés** sur chaque bouton de série (point de la couleur série)
-- **Compteurs** dans chaque filtre (badges numériques)
-- **Active filter tags** : pills supprimables sous les filtres → visibilité des filtres actifs
-- **"Tout effacer"** : lien pour reset tout en un clic
-
-```
-┌──────────────────────────────────────────────────────────────────┐
-│ 🔍 [Rechercher "Darth"  ✕]       [Trier par : Série ▼]         │
-│                                                                  │
-│ [Tous 24] [●Originale 8] [●Prélogie 5] [●Sequel 4] [●Mando 4]  │
-│ [●Clone Wars 2] [●Divers 1]  |  [💙Lumineux 12] [🔴Obscur 12]  │
-│                                                                  │
-│ FILTRES : [Sequel ✕] [🔴Obscur ✕] ["Darth" ✕]  Tout effacer    │
-└──────────────────────────────────────────────────────────────────┘
-```
-
-**CSS clé — Filter pills v2 :**
-```css
-.filter-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 5px 12px;
-  border-radius: var(--radius-pill);  /* ← v2 : pill vs rectangle v1 */
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  transition: all var(--transition-smooth);
-}
-
-/* Dot couleur série */
-.filter-dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-}
-
-/* Badge compteur dans le filtre */
-.filter-count {
-  background: rgba(255,255,255,0.08);
-  border-radius: var(--radius-pill);
-  padding: 1px 5px;
-  font-size: 0.62rem;
-}
-
-/* Active filter tag (supprimable) */
-.active-filter-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: rgba(79,195,247,0.1);
-  border: 1px solid rgba(79,195,247,0.25);
-  border-radius: var(--radius-pill);
-  padding: 3px 8px 3px 10px;
-  font-size: 0.7rem;
-}
-```
-
-### 3. Count Bar (v2)
-
-**Changements v2 :**
-- Contexte enrichi : affiche les filtres actifs dans le texte (`3 casques · Sequel · 🔴 Obscur · "Darth"`)
-- **Toggle vue** : boutons grille/liste à droite
-
-```
-▸ 3 casque(s) · Sequel · 🔴 Obscur · "Darth"           [⊞] [☰]
-```
-
-### 4. Cards Casques (v2)
-
-**Changements v2 :**
-- **Quick actions au hover** : boutons 🔍 (détail) et ♡ (favoris) apparaissent slide-in à droite
-- **Barre de progression année** : fine barre 2px en bas, gradient dark→light proportionnel à l'année (1977→2024)
-- **Zoom image au hover** : image scale(1.06) + filter glow coloré selon côté de la Force
-- **Scanline effect** : overlay subtil au hover pour effet écran holographique
-
-```
-┌─────────────────────────────┐
-│  [Badge série]  [Badge côté]│  ← Pills ronds (vs rectangles v1)
-│                         [🔍]│  ← v2 : Quick actions (apparaît au hover)
-│      [Image casque]     [♡] │
-│       (zoom + glow)         │
-│─────────────────────────────│
-│  Nom du casque              │
-│  Série · Année     #75304   │
-│═════════════════════════════│  ← v2 : Barre année (2px, gradient)
-└─────────────────────────────┘
-```
-
-**CSS clé — Quick actions :**
-```css
-.card-actions {
-  position: absolute;
-  top: 12px; right: 12px;
-  opacity: 0;
-  transform: translateX(8px);
-  transition: opacity 0.2s ease, transform 0.25s ease;
-}
-.helmet-card:hover .card-actions {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Zoom image */
-.helmet-card:hover .card-image img {
-  transform: scale(1.06) translateY(-4px);
-  filter: drop-shadow(0 0 20px rgba(79,195,247,0.3));
-}
-.helmet-card[data-side="dark"]:hover .card-image img {
-  filter: drop-shadow(0 0 20px rgba(229,57,53,0.3));
-}
-
-/* Barre année */
-.card-year-bar { height: 2px; }
-.card-year-bar__fill {
-  background: linear-gradient(90deg, var(--color-dark-purple), var(--color-light-primary));
-}
-```
-
-### 5. Modal de Détail Casque (v2 — NOUVEAU)
-
-**Composant entièrement nouveau.** Remplace le comportement "rien ne se passe au clic" de v1.
-
-**Layout :** Modal centré, 2 colonnes, max-width 860px  
-**Animation :** `scale(0.92) → scale(1)` + `translateY(20px) → 0` avec spring easing  
-**Fermeture :** Clic sur ✕, Escape, ou clic sur le backdrop  
-**Navigation :** Flèches gauche/droite externes pour passer au casque suivant/précédent
+### 1. Navigation Bar
 
 ```
 ┌────────────────────────────────────────────────────┐
-│                                           [✕ Close]│
-│ ┌──────────────────┐ ┌──────────────────────────┐  │
-│ │   [Nébuleuse]    │ │  [Badge série]            │  │
-│ │                  │ │  Nom du Casque            │  │
-│ │    🪖 float     │ │  #75304 · LEGO SW         │  │
-│ │                  │ │  ┌──────────────────────┐ │  │
-│ │  [Thumbs x3]     │ │  │ SET# │ ANNÉE │ SÉRIE │ │  │
-│ │                  │ │  │ CÔTÉ │PIÈCES │ DIFF  │ │  │
-│ │  [🔴 Obscur ●]  │ │  └──────────────────────┘ │  │
-│ └──────────────────┘ │  Description narrative... │  │
-│                      │  [🛒 LEGO.com] [🔗 Brick] │  │
-│ └──────────────────────────────────────────────┘  │
-│  CASQUES LIÉS : [Vador] [Luke] [Storm] [Boba]...  │
-└────────────────────────────────────────────────────┘
+│  HELMET COLLECTION         Collection  Favorites   │
+│  (Playfair Display)        About                   │
+│────────────────────────────────────────────────────│  ← 1px gold #C9A84C
 ```
 
-**Détails modal :**
-
+**CSS clé :**
 ```css
-/* Entrée */
-.helmet-modal {
-  animation: modalEnter 0.35s cubic-bezier(0.34, 1.3, 0.64, 1);
+.navbar {
+  background: #fff;
+  border-bottom: 1px solid var(--color-gold);
+  padding: 20px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-@keyframes modalEnter {
-  from { opacity: 0; transform: scale(0.92) translateY(20px); }
-  to   { opacity: 1; transform: scale(1) translateY(0); }
+.navbar-brand {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--color-text-primary);
 }
-
-/* Colonne visuelle */
-.modal-visual {
-  background: linear-gradient(160deg, rgba(28,37,53,0.9), rgba(11,15,26,0.95));
-  border-right: 1px solid rgba(176,190,197,0.1);
+.nav-link {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  transition: color 0.2s ease;
 }
-
-/* Specs table */
-.modal-specs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: rgba(176,190,197,0.08);  /* Border trick */
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-}
-
-/* CTA primaire (couleur selon côté) */
-.modal-cta-primary {
-  background: linear-gradient(135deg, rgba(229,57,53,0.2), rgba(123,31,162,0.2));
-  border: 1px solid rgba(229,57,53,0.4);
-  /* Pour Lumineux : rgba(79,195,247,0.2) + rgba(41,182,246,0.4) */
-}
-```
-
-**Sections du modal :**
-1. **Header** : badge série, titre, set#, boutons favoris/partager
-2. **Specs grid** : Set#, Année, Série, Côté, Pièces, Difficulté
-3. **Description** : texte narratif avec border-left colored
-4. **CTA footer** : LEGO.com (primary) + Bricklink (secondary) + compteur `3/24`
-5. **Casques liés** : scroll horizontal des autres casques de la même série
-
-### 6. Barre de Recherche Holographique (inchangée v1)
-
-```css
-.search-input:focus {
-  border-color: var(--color-light-primary);
-  box-shadow: 
-    0 0 0 3px rgba(79,195,247,0.12),
-    0 0 16px rgba(79,195,247,0.15);
-}
-```
-
-### 7. État vide (inchangé v1)
-
-```
-  🔭
-  Aucun casque trouvé
-  dans cette région de la galaxie.
-  [ Réinitialiser les filtres ]
-```
-
-### 8. Footer (inchangé v1)
-
-```
-────────── ✦ ──────────
-Lego Star Wars Helmets — Collection non officielle
-May the Force be with you. 🌟
-© 2024 · Données : Bricklink · v2.0
+.nav-link:hover { color: var(--color-text-primary); }
 ```
 
 ---
 
-## ✨ Animations & Effets Spéciaux
+### 2. Hero Section
 
-### Fond étoilé animé (3 couches) — inchangé v1
+```
+┌────────────────────────────────────────────────────┐
+│                                                    │
+│              HELMET COLLECTION                     │
+│         (Playfair Display, 300 weight)             │
+│                                                    │
+│      LEGO STAR WARS · 24 PIÈCES · 6 SÉRIES        │
+│              ─────────────────                     │
+│        ← thin gold rule 120px wide →              │
+│                                                    │
+│    24 Helmets   6 Series   12 Light   12 Dark      │
+│    (monospace)                                     │
+│                                                    │
+└────────────────────────────────────────────────────┘
+```
 
-### Particules de Force (canvas) — inchangé v1
-
-### v2 — Nouvelles animations
-
-#### Casque flottant dans le hero
+**CSS clé :**
 ```css
-@keyframes helmFloat {
-  0%,100% { transform: translateY(0) rotate(-2deg); }
-  50%      { transform: translateY(-18px) rotate(2deg); }
+.hero {
+  padding: 120px 48px;
+  text-align: center;
+  background: var(--color-white);
+}
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+}
+.hero-subtitle {
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin-bottom: 32px;
+}
+.hero-rule {
+  width: 120px;
+  height: 1px;
+  background: var(--color-gold);
+  margin: 0 auto 40px;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+}
+.hero-stat-value {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  color: var(--color-text-primary);
+  display: block;
+}
+.hero-stat-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }
 ```
 
-#### Dot pulsant (badge Côté de la Force dans modal)
+---
+
+### 3. Barre de Filtres v3
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                                                              │
+│  ALL · ORIGINAL TRILOGY · PREQUEL · SEQUEL · MANDO · CLONE  │
+│  ───                                                         │
+│  (active = thin gold underline, no fill)                    │
+│                                         [LIGHT SIDE] [DARK] │
+│                                         [Search...        ] │
+│ FILTRES : [Original Trilogy ×] [Dark ×]     Clear all       │
+└──────────────────────────────────────────────────────────────┘
+```
+
+**CSS clé :**
 ```css
-@keyframes pulseDot {
-  0%,100% { transform: scale(1); opacity: 1; }
-  50%      { transform: scale(1.6); opacity: 0.6; }
+.filter-bar {
+  background: var(--color-white);
+  border-top: 1px solid var(--color-mist);
+  border-bottom: 1px solid var(--color-mist);
+  padding: 20px 48px;
+  position: sticky;
+  top: 61px;  /* navbar height */
+  z-index: 100;
+}
+.filter-pill {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+}
+.filter-pill:hover { color: var(--color-text-primary); }
+.filter-pill.active {
+  color: var(--color-text-primary);
+  border-bottom-color: var(--color-gold);
+}
+.force-toggle {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border: 1px solid var(--color-mist);
+  background: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.force-toggle.active[data-side="light"] {
+  border-color: var(--color-light-border);
+  background: var(--color-light-soft);
+  color: var(--color-light);
+}
+.force-toggle.active[data-side="dark"] {
+  border-color: var(--color-dark-border);
+  background: var(--color-dark-soft);
+  color: var(--color-dark);
+}
+.search-input {
+  border: none;
+  border-bottom: 1px solid var(--color-mist);
+  background: transparent;
+  font-size: 0.75rem;
+  color: var(--color-text-primary);
+  padding: 4px 0;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.search-input:focus { border-bottom-color: var(--color-gold); }
+.active-filter-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  padding: 2px 8px 2px 10px;
+  border: 1px solid var(--color-gold-border);
+  background: var(--color-gold-dim);
+  color: var(--color-text-secondary);
+  cursor: pointer;
 }
 ```
 
-#### Shimmer titre hero (v2 — angle ajusté)
-```css
-@keyframes shimmer {
-  from { background-position: 0% center; }
-  to   { background-position: 200% center; }
-}
+---
+
+### 4. Card Casque v3
+
+```
+┌──────────────────────────────┐
+│                              │
+│     [Image casque]           │  ← fond blanc pur, image centrée
+│     (fond #FFFFFF)           │     hover: scale(1.03)
+│                              │
+│  DARTH VADER                 │  ← small-caps Inter
+│  Original Trilogy · 2021     │  ← gray
+│  #75304                      │  ← gold monospace tiny
+│                              │
+│  [♡]                         │  ← icône discète top-right (hover only)
+└──────────────────────────────┘
+  (thin gold border au hover)
 ```
 
-#### Modal entrée
+**CSS clé :**
 ```css
+.helmet-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-smoke);
+  padding: 24px 20px 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+}
+.helmet-card:hover {
+  border-color: var(--color-gold);
+  box-shadow: 0 4px 24px rgba(201, 168, 76, 0.1);
+}
+.card-image-wrap {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-white);
+  overflow: hidden;
+}
+.card-image-wrap img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+  transition: transform 0.35s ease;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.06));
+}
+.helmet-card:hover .card-image-wrap img {
+  transform: scale(1.05) translateY(-4px);
+  filter: drop-shadow(0 16px 28px rgba(0,0,0,0.1));
+}
+.card-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  margin-top: 16px;
+}
+.card-meta {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+.card-set {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--color-gold);
+  margin-top: 4px;
+}
+.card-fav-btn {
+  position: absolute;
+  top: 12px; right: 12px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.helmet-card:hover .card-fav-btn { opacity: 1; }
+.card-fav-btn.active { opacity: 1; color: var(--color-gold); }
+```
+
+---
+
+### 5. Modal Détail Casque v3
+
+```
+╔═══════════════════════════════════════════════════════════╗
+║                                                       [✕] ║
+║  ┌──────────────────┐  ┌────────────────────────────────┐ ║
+║  │                  │  │  SET #75304                    │ ║
+║  │   [Image large]  │  │  DARTH VADER                   │ ║
+║  │    (float anim)  │  │  ─────────────────────         │ ║
+║  │                  │  │  SET NO  75304  │  YEAR  2021  │ ║
+║  │ [□] [□] [□]      │  │  SERIES  Orig.  │  SIDE  Dark  │ ║
+║  │  (thumbnails)    │  │  PIECES  834    │  ★★★★☆       │ ║
+║  │  [● DARK SIDE]   │  │                                │ ║
+║  │  ← ·1/24· →     │  │  "An iconic piece from the     │ ║
+║  └──────────────────┘  │  Original Trilogy..."          │ ║
+║                        │                                │ ║
+║                        │  [SHOP LEGO.COM] [BRICKLINK]   │ ║
+║                        └────────────────────────────────┘ ║
+╚═══════════════════════════════════════════════════════════╝
+```
+
+**CSS clé :**
+```css
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(250, 250, 248, 0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+.helmet-modal {
+  background: var(--color-white);
+  border: 1px solid var(--color-mist);
+  max-width: 900px;
+  width: 94vw;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  animation: modalEnter 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.08);
+}
 @keyframes modalEnter {
-  from { opacity: 0; transform: scale(0.92) translateY(20px); }
-  to   { opacity: 1; transform: scale(1) translateY(0); }
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.modal-visual {
+  background: var(--color-ivory);
+  border-right: 1px solid var(--color-mist);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.modal-image {
+  max-width: 240px;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
+  animation: floatSlow 4s ease-in-out infinite;
+}
+@keyframes floatSlow {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+.modal-thumbs { display: flex; gap: 8px; }
+.modal-thumb {
+  width: 40px; height: 40px;
+  border: 1px solid var(--color-mist);
+  object-fit: contain;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.modal-thumb.active { border-color: var(--color-gold); }
+.force-badge {
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.force-badge[data-side="dark"] {
+  border-color: var(--color-dark-border);
+  color: var(--color-dark);
+  background: var(--color-dark-soft);
+}
+.force-badge[data-side="light"] {
+  border-color: var(--color-light-border);
+  color: var(--color-light);
+  background: var(--color-light-soft);
+}
+.modal-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+}
+.modal-content { padding: 40px 36px; }
+.modal-set-num {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--color-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+}
+.modal-rule {
+  height: 1px;
+  background: var(--color-gold);
+  margin-bottom: 24px;
+  width: 80px;
+}
+.modal-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--color-mist);
+  margin-bottom: 24px;
+}
+.spec-cell {
+  padding: 10px 14px;
+  border-right: 1px solid var(--color-mist);
+  border-bottom: 1px solid var(--color-mist);
+}
+.spec-label {
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  display: block;
+  margin-bottom: 3px;
+}
+.spec-value {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+.modal-description {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 28px;
+  border-left: 2px solid var(--color-gold-border);
+  padding-left: 14px;
+}
+.modal-cta {
+  display: flex;
+  gap: 10px;
+}
+.btn-primary {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: 1px solid var(--color-gold);
+  background: none;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-primary:hover {
+  background: var(--color-gold-dim);
+}
+.btn-secondary {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: 1px dashed var(--color-mist);
+  background: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-secondary:hover {
+  border-color: var(--color-text-secondary);
+  color: var(--color-text-primary);
 }
 ```
 
-#### Quick actions card slide-in
-```css
-/* Au hover card → transition depuis translateX(8px) vers 0 */
-transition: opacity 0.2s ease, transform 0.25s ease;
-```
+---
+
+## ✨ Animations & Effets v3
 
 ### Tokens d'animation
 
 ```css
---transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);  /* Spring pour hover card */
---transition-smooth: 0.25s cubic-bezier(0.4, 0, 0.2, 1);       /* Material ease-out */
---transition-fast:   0.15s ease;                                 /* Micro-interactions */
+--ease-out:   cubic-bezier(0.16, 1, 0.3, 1);      /* Expo out — entrées fluides */
+--ease-in:    cubic-bezier(0.7, 0, 0.84, 0);       /* Expo in — sorties */
+--ease-hover: cubic-bezier(0.4, 0, 0.2, 1);        /* Material — hover cards */
+--duration-fast:   150ms;   /* Micro-interactions */
+--duration-normal: 250ms;   /* Transitions standard */
+--duration-slow:   350ms;   /* Entrées modales */
+```
+
+### Animations définies
+
+```css
+/* Modal entrée */
+@keyframes modalEnter {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Image casque flottante */
+@keyframes floatSlow {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+/* Shimmer rule dorée */
+@keyframes ruleShimmer {
+  0%   { opacity: 0.4; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+/* Apparition hero (stagger) */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* .hero-title { animation: fadeUp 0.7s var(--ease-out) 0.1s both; } */
+/* .hero-subtitle { animation: fadeUp 0.7s var(--ease-out) 0.25s both; } */
+/* .hero-stats { animation: fadeUp 0.7s var(--ease-out) 0.4s both; } */
 ```
 
 ### Préférence reduced-motion
 
 ```css
 @media (prefers-reduced-motion: reduce) {
-  .helmet-card { transition: none; }
-  .modal-helmet-img { animation: none; }
-  .hero-title__main { animation: none; }
-  .stars-layer { animation: none; }
-}
-```
-
----
-
-## 📐 Responsive Design
-
-### Breakpoints (inchangés v1)
-
-```css
---bp-mobile:   375px;
---bp-tablet:   768px;
---bp-laptop:  1024px;
---bp-desktop: 1280px;
---bp-wide:    1536px;
-```
-
-### Grille de casques
-
-| Breakpoint | Colonnes | Gap | Card min-width |
-|-----------|----------|-----|----------------|
-| Mobile (< 430px) | 2 | 12px | 160px |
-| Mobile L (430-768px) | 2 | 16px | 180px |
-| Tablet (768-1024px) | 3 | 20px | 220px |
-| Laptop (1024-1280px) | 4 | 24px | 240px |
-| Desktop (1280px+) | 5 | 24px | 240px |
-| Wide (1536px+) | 6 | 28px | 260px |
-
-### Modal responsive (v2)
-
-```css
-/* Desktop → 2 colonnes */
-.modal-layout { grid-template-columns: 320px 1fr; }
-
-/* Tablet → stack vertical */
-@media (max-width: 768px) {
-  .modal-layout { grid-template-columns: 1fr; }
-  .modal-visual { min-height: 240px; }
-  .helmet-modal { max-width: 96vw; border-radius: 16px; }
-}
-
-/* Mobile → quasi plein écran, drawer du bas */
-@media (max-width: 480px) {
-  .helmet-modal {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    border-radius: 20px 20px 0 0;
-    max-height: 92vh;
-    overflow-y: auto;
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
 ```
 
-### Filtres responsive (v2)
+---
+
+## 📐 Responsive Design v3
+
+### Grille Casques
+
+| Breakpoint | Colonnes | Gap |
+|-----------|----------|-----|
+| Mobile (< 480px) | 2 | 12px |
+| Tablet (480-768px) | 3 | 16px |
+| Laptop (768-1024px) | 4 | 20px |
+| Desktop (1024-1280px) | 5 | 24px |
+| Wide (1280px+) | 6 | 28px |
+
+### Modal Responsive
 
 ```css
-/* Mobile : sort masqué, active tags sur 2 lignes */
 @media (max-width: 768px) {
-  .sort-select { display: none; }
-  .filters-row { overflow-x: auto; flex-wrap: nowrap; }
-  .active-filters { padding-top: 6px; }
+  .helmet-modal { grid-template-columns: 1fr; }
+  .modal-visual { min-height: 260px; border-right: none; border-bottom: 1px solid var(--color-mist); }
+}
+@media (max-width: 480px) {
+  .helmet-modal { width: 100%; border-radius: 16px 16px 0 0; margin-top: auto; }
+  .modal-backdrop { align-items: flex-end; }
 }
 ```
 
 ---
 
-## 🖼️ Maquettes Générées
+## 🖼️ Maquettes Stitch Générées
 
-> ⚠️ MCP Stitch non disponible dans l'environnement courant (non configuré dans mcporter.json).
-> Les maquettes ont été générées comme fichiers HTML haute-fidélité autonomes.
+> ✅ Maquettes générées via Stitch MCP (Gemini 3 Pro) — Projet ID: `7556511782102256471`
 
-### Écran 1 — Page principale v2 (Hero compact + Filtres v2 + Grille)
-- **Fichier HTML :** `.stitch/designs/lego-sw-helmets-v2-main.html`
-- **Contenu :** Hero 72vh avec stats, filtres pills avec compteurs, active filter tags, sort dropdown, toggle vue grille/liste, 3 cards démo avec quick actions, barre d'année
+### Écran 1 — Galerie principale (Hero + Filtres + Grille)
+- **Fichier :** `.stitch/designs/v3/gallery-main.html`
+- **Screen ID :** `e49cc8aed0394529b94affa9b115f21b`
+- **Dimensions :** 2560 × 4086px
+- **Contenu :** Navigation serif/gold, hero blanc centré avec stats monospace, filtres pills uppercase avec gold underline actif, grille 5 colonnes cards blanches avec ombres légères
 
-### Écran 2 — Modal de détail casque (NOUVEAU v2)
-- **Fichier HTML :** `.stitch/designs/lego-sw-helmets-v2-detail.html`
-- **Contenu :** Modal 2 colonnes, thumbnails multiples, specs grid, description, CTA LEGO.com/Bricklink, casques liés scroll horizontal, navigation prev/next
+### Écran 2 — Résultats filtrés / Search active
+- **Fichier :** `.stitch/designs/v3/gallery-filtered.html`
+- **Screen ID :** `b7cf9f511e32472cab68458d9be4c8f0`
+- **Dimensions :** 2560 × 2480px
+- **Contenu :** Filtres actifs (gold underline + border), active filter chips supprimables, 3 résultats centrés sur fond blanc, espace vide expressif autour des résultats
+
+### Écran 3 — Modal détail casque (Darth Vader)
+- **Fichier :** `.stitch/designs/v3/helmet-modal.html`
+- **Screen ID :** `bd2fd0733fbc40f0ac470cf1527ca452`
+- **Dimensions :** 2560 × 2048px
+- **Contenu :** Modal 2 colonnes sur backdrop ivory flou, image Darth Vader, thumbnails, force badge bordeaux, specs grid en tableau, description italique prose, CTA outlined gold
 
 ---
 
-## 🚀 Checklist d'Implémentation v2
+## 🚀 Checklist d'Implémentation v3
 
-### Phase 1 — Nouvelles variables CSS (tokens v2)
-- [ ] `--color-gold-accent`, `--color-surface-hover`, `--color-border-glow`
-- [ ] `--radius-pill`, `--transition-bounce`, `--transition-smooth`, `--transition-fast`
-- [ ] Tokens d'animation (`--anim-spring`, `--anim-modal`)
+### Phase 1 — Setup typographie & variables CSS
+- [ ] Import Google Fonts (Playfair Display + Inter + JetBrains Mono)
+- [ ] Définir tous les tokens CSS v3 (couleurs, typo, transitions)
+- [ ] Supprimer les variables v2 (--color-void, --color-nebula, etc.)
 
-### Phase 2 — Hero v2
-- [ ] Réduire hauteur hero à `72vh`
-- [ ] Ajouter `.hero-badge` gold
-- [ ] Ajouter `.hero-stats` avec 4 compteurs dynamiques
-- [ ] Casque flottant illustratif (optionnel — décor right)
+### Phase 2 — Structure HTML & navbar
+- [ ] Navbar blanche minimale avec brand serif et gold border-bottom
+- [ ] Nav links uppercase tracked
+- [ ] Sticky behaviour avec z-index propre
 
-### Phase 3 — Filtres v2
-- [ ] Transformer `.filter-btn` en pills (`border-radius: 999px`)
-- [ ] Ajouter `.filter-dot` (cercle couleur série dans chaque bouton)
-- [ ] Ajouter `.filter-count` (badge numérique dynamique)
-- [ ] Ajouter `<select class="sort-select">` avec options nom/année/série
-- [ ] Bouton clear sur l'input search
-- [ ] Composant `.active-filters` : afficher les filtres actifs comme tags supprimables
-- [ ] Lien "Tout effacer" pour reset complet
+### Phase 3 — Hero section
+- [ ] Titre Playfair Display léger (300)
+- [ ] Subtitle uppercase tracé
+- [ ] Gold rule horizontale 120px centrée
+- [ ] Stats row monospace (4 valeurs)
+- [ ] Animations fadeUp stagger au load
 
-### Phase 4 — Count bar v2
-- [ ] Afficher les filtres actifs dans le texte du compteur
-- [ ] Ajouter toggle boutons grille/liste `.count-bar__views`
+### Phase 4 — Filter bar sticky
+- [ ] Pills type `button` avec gold underline actif (pas de background)
+- [ ] Force side toggle minimal outlined
+- [ ] Search input bottom-border-only style
+- [ ] Sort select (minimal, flèche custom)
+- [ ] Active filter chips avec close button
+- [ ] "Clear all" link discret
 
-### Phase 5 — Cards v2
-- [ ] Ajouter `.card-actions` (quick actions slide-in au hover)
-- [ ] Ajouter `.card-year-bar` (barre 2px en bas, progression calculée en JS)
-- [ ] Améliorer zoom image au hover avec glow coloré selon `data-side`
-- [ ] Scanline effect (`::before` pseudo-element, opacity 0→1 au hover)
+### Phase 5 — Count bar
+- [ ] Texte résultat "X of 24" petit, muted
+- [ ] Toggle grille/liste (icônes lignes/grid)
 
-### Phase 6 — Modal de détail (NOUVEAU — priorité haute)
-- [ ] Composant `.helmet-modal` avec layout 2 colonnes
-- [ ] Colonne visuelle : image flottante, thumbnails variants, badge côté pulsant
-- [ ] Colonne contenu : header + specs grid + description + CTA footer
-- [ ] Section `.modal-related` : strip scroll horizontal des casques liés
-- [ ] Navigation prev/next entre casques
-- [ ] Fermeture : ✕, Escape, backdrop click
-- [ ] Animation entrée/sortie modale
+### Phase 6 — Cards v3
+- [ ] Fond blanc, border smoke → gold au hover
+- [ ] Image centrée, fond blanc pur, aspect-ratio 1:1
+- [ ] Image scale + drop-shadow lift au hover
+- [ ] Nom small-caps, set# monospace gold
+- [ ] Bouton favoris discret (visible au hover seulement)
+
+### Phase 7 — Modal v3 (priorité haute)
+- [ ] Backdrop ivory + `backdrop-filter: blur(8px)`
+- [ ] Grid 2 colonnes (360px + 1fr)
+- [ ] Colonne visuelle : image float, thumbnails, force badge, nav prev/next
+- [ ] Colonne content : set#, titre serif, gold rule, specs grid, description italic, CTA outlined
+- [ ] Animation entrée `modalEnter`
+- [ ] Fermeture : ✕, Escape, clic backdrop
 - [ ] Responsive : stack vertical ≤768px, bottom sheet ≤480px
 
-### Phase 7 — JS v2
-- [ ] `computeFilterCounts()` : compter les casques par série/côté dynamiquement
-- [ ] `renderActiveFilterTags()` : afficher/supprimer les tags de filtres actifs
-- [ ] `sortHelmets(by)` : implémenter le tri (nom, année, série)
-- [ ] `openHelmetModal(id)` : ouvrir/fermer le modal + charger les données du casque
-- [ ] `navigateModal(dir)` : prev/next dans la liste filtrée
-- [ ] `computeYearProgress(year)` : calculer le % pour la barre d'année (1977–2024)
-- [ ] `toggleView(mode)` : basculer grille/liste
-- [ ] Gestionnaire Escape pour fermer le modal
+### Phase 8 — JS update
+- [ ] `openModal(id)` / `closeModal()` avec focus trap
+- [ ] `navigateModal(dir)` — prev/next dans la liste filtrée courante
+- [ ] Keyboard: Escape (close), ArrowLeft/Right (navigate)
+- [ ] `computeFilterCounts()` — compter les résultats par filtre
+- [ ] `renderActiveFilterTags()` — afficher les chips actifs
+- [ ] `sortHelmets(by)` — tri nom/année/série
+- [ ] `toggleView(mode)` — grille/liste
 
-### Phase 8 — Polish & Accessibilité
-- [ ] `aria-modal="true"` + `role="dialog"` sur le modal
-- [ ] Focus trap dans le modal
-- [ ] `aria-label` sur tous les boutons d'action
-- [ ] Focus visible custom (ring bleu Force)
-- [ ] `prefers-reduced-motion` : désactiver animations
-- [ ] Lazy loading images (`loading="lazy"`)
-- [ ] `will-change: transform` sur les cards (perf)
+### Phase 9 — Polish accessibilité
+- [ ] `role="dialog"` + `aria-modal="true"` + `aria-labelledby` sur modal
+- [ ] Focus trap dans modal
+- [ ] `aria-label` sur tous les boutons icon
+- [ ] Focus visible : outline 2px gold offset 2px
+- [ ] `loading="lazy"` sur images
+- [ ] Skip to content link
 
 ---
 
-## 📊 Récapitulatif des Améliorations v1 → v2
+## 📊 Comparatif v2 → v3
 
-| Composant | v1 | v2 | Impact UX |
-|-----------|----|----|-----------|
-| Hero | 100vh (trop grand) | 72vh + stats visibles | Reach collection +30% plus rapide |
-| Filtres | Boutons rectangulaires | Pills colorées + compteurs | Identification série immédiate |
-| Filtres actifs | Invisibles | Tags supprimables | Compréhension état filtre +++ |
-| Recherche | Input basique | + bouton clear + sort | Efficacité tâche recherche |
-| Cards | Statiques au hover | Quick actions + zoom glow + barre année | Engagement +++ |
-| Clic card | Rien | Modal détail complet | Conversion info-produit |
-| Modal | Absent | 2 cols + specs + liés + CTA | Profondeur de découverte |
-| Navigation | — | Prev/next entre casques | Exploration fluide |
-| Vue | Grille fixe | Toggle grille/liste | Préférence utilisateur |
+| Dimension | v2 | v3 | Gain |
+|-----------|----|----|------|
+| **Fond principal** | Espace noir `#060810` | Blanc muséal `#FFFFFF` | Rupture totale, mémorable |
+| **Direction** | Cinéma SF sombre | Art gallery luxe | Unique, inattendu |
+| **Typographie titre** | Orbitron (SF) | Playfair Display (serif) | Noblesse, intemporel |
+| **Accent principal** | Bleu force `#4fc3f7` | Or chaud `#C9A84C` | Plus premium, moins générique |
+| **Fond cards** | Glassmorphism dark | Blanc pur, ombre légère | Les casques ressortent mieux |
+| **Filtres** | Pills colorées avec background | Texte uppercase + gold underline | Plus sobre, plus éditorial |
+| **Hover cards** | Glow néon coloré | Border gold + image lift | Élégance vs tape-à-l'œil |
+| **Modal visual** | Colonne dark avec nébuleuse | Fond ivory pur + blur | Artwork first |
+| **Description casque** | Spec grid technique | Prose italic serif + specs | Catalogue d'art vs fiche produit |
+| **Animations** | Particules, étoiles, shimmer | Float doux, fade-up, modal enter | Subtilité vs spectacle |
+| **Côté Force** | Rouge/bleu criards | Bordeaux/bleu acier sobres | Nuance vs saturation |
+| **Feel global** | Star Wars immersive | Collector's exhibition | Maturité, prestige |
