@@ -500,17 +500,21 @@ function toggleFavorite(id, btn) {
 
   if (state.favorites.has(id)) {
     state.favorites.delete(id);
-    btn.textContent = '♡';
-    btn.classList.remove('active');
-    btn.setAttribute('aria-label', `Ajouter aux favoris`);
+    if (btn) {
+      btn.textContent = '♡';
+      btn.classList.remove('active');
+      btn.setAttribute('aria-label', `Ajouter aux favoris`);
+    }
   } else {
     state.favorites.add(id);
-    btn.textContent = '♥';
-    btn.classList.add('active');
-    btn.setAttribute('aria-label', `Retirer des favoris`);
-    // Animation small bounce
-    btn.style.transform = 'scale(1.35)';
-    setTimeout(() => { btn.style.transform = ''; }, 200);
+    if (btn) {
+      btn.textContent = '♥';
+      btn.classList.add('active');
+      btn.setAttribute('aria-label', `Retirer des favoris`);
+      // Animation small bounce
+      btn.style.transform = 'scale(1.35)';
+      setTimeout(() => { btn.style.transform = ''; }, 200);
+    }
   }
 
   saveFavorites();
@@ -640,7 +644,7 @@ function populateModal(helmet) {
   // Force bar
   const forceFill = document.getElementById('modal-force-fill');
   if (forceFill) {
-    const pct = helmet.side === 'light' ? 80 : 80;
+    const pct = helmet.side === 'light' ? 75 : 100;
     forceFill.style.width = `${pct}%`;
     forceFill.style.background = helmet.side === 'light'
       ? 'linear-gradient(90deg, rgba(79,195,247,0.3), #4fc3f7)'
