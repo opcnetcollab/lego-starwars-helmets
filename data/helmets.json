@@ -1,0 +1,218 @@
+[
+  {
+    "id": 1,
+    "name": "Dark Vador",
+    "set_number": "75304",
+    "year": 2021,
+    "series": "Trilogie Originale",
+    "side": "dark",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75304-1.png"
+  },
+  {
+    "id": 2,
+    "name": "Stormtrooper",
+    "set_number": "75276",
+    "year": 2020,
+    "series": "Trilogie Originale",
+    "side": "dark",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75276-1.png"
+  },
+  {
+    "id": 3,
+    "name": "Luke Skywalker (Casque X-Wing)",
+    "set_number": "75327",
+    "year": 2022,
+    "series": "Trilogie Originale",
+    "side": "light",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75327-1.png"
+  },
+  {
+    "id": 4,
+    "name": "Boba Fett",
+    "set_number": "75277",
+    "year": 2020,
+    "series": "Trilogie Originale",
+    "side": "dark",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75277-1.png"
+  },
+  {
+    "id": 5,
+    "name": "TIE Fighter Pilot",
+    "set_number": "75274",
+    "year": 2020,
+    "series": "Trilogie Originale",
+    "side": "dark",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75274-1.png"
+  },
+  {
+    "id": 6,
+    "name": "Rebel Trooper",
+    "set_number": "75305",
+    "year": 2021,
+    "series": "Trilogie Originale",
+    "side": "light",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75305-1.png"
+  },
+  {
+    "id": 7,
+    "name": "Imperial Stormtrooper",
+    "set_number": "75328",
+    "year": 2022,
+    "series": "Trilogie Originale",
+    "side": "dark",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75328-1.png"
+  },
+  {
+    "id": 8,
+    "name": "Obi-Wan Kenobi",
+    "set_number": "75333",
+    "year": 2022,
+    "series": "Prélogie",
+    "side": "light",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75333-1.png"
+  },
+  {
+    "id": 9,
+    "name": "Clone Trooper de la Phase I",
+    "set_number": "75349",
+    "year": 2023,
+    "series": "Prélogie",
+    "side": "light",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75349-1.png"
+  },
+  {
+    "id": 10,
+    "name": "Droïde de Combat",
+    "set_number": "75368",
+    "year": 2023,
+    "series": "Prélogie",
+    "side": "dark",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75368-1.png"
+  },
+  {
+    "id": 11,
+    "name": "Dark Maul",
+    "set_number": "75403",
+    "year": 2024,
+    "series": "Prélogie",
+    "side": "dark",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75403-1.png"
+  },
+  {
+    "id": 12,
+    "name": "Casque de Kylo Ren",
+    "set_number": "75256",
+    "year": 2019,
+    "series": "Trilogie Sequel",
+    "side": "dark",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75256-1.png"
+  },
+  {
+    "id": 13,
+    "name": "Snowtrooper",
+    "set_number": "75343",
+    "year": 2023,
+    "series": "Trilogie Sequel",
+    "side": "dark",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75343-1.png"
+  },
+  {
+    "id": 14,
+    "name": "First Order Stormtrooper",
+    "set_number": "75401",
+    "year": 2024,
+    "series": "Trilogie Sequel",
+    "side": "dark",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75401-1.png"
+  },
+  {
+    "id": 15,
+    "name": "Le Mandalorien",
+    "set_number": "75328",
+    "year": 2022,
+    "series": "The Mandalorian",
+    "side": "light",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75328-1.png"
+  },
+  {
+    "id": 16,
+    "name": "The Mandalorian (Beskar)",
+    "set_number": "75341",
+    "year": 2022,
+    "series": "The Mandalorian",
+    "side": "light",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75341-1.png"
+  },
+  {
+    "id": 17,
+    "name": "Boba Fett (Retour)",
+    "set_number": "75277",
+    "year": 2021,
+    "series": "The Mandalorian",
+    "side": "dark",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75277-1.png"
+  },
+  {
+    "id": 18,
+    "name": "Clone Trooper de la Phase II",
+    "set_number": "75350",
+    "year": 2023,
+    "series": "The Clone Wars",
+    "side": "light",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75350-1.png"
+  },
+  {
+    "id": 19,
+    "name": "Arc Trooper",
+    "set_number": "75391",
+    "year": 2024,
+    "series": "The Clone Wars",
+    "side": "light",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75391-1.png"
+  },
+  {
+    "id": 20,
+    "name": "Clone Commander Cody",
+    "set_number": "75404",
+    "year": 2024,
+    "series": "The Clone Wars",
+    "side": "light",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75404-1.png"
+  },
+  {
+    "id": 21,
+    "name": "Casque de Grogu",
+    "set_number": "75360",
+    "year": 2023,
+    "series": "The Mandalorian",
+    "side": "light",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75360-1.png"
+  },
+  {
+    "id": 22,
+    "name": "Casque R2-D2",
+    "set_number": "75308",
+    "year": 2021,
+    "series": "Divers",
+    "side": "light",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75308-1.png"
+  },
+  {
+    "id": 23,
+    "name": "Casque C-3PO",
+    "set_number": "75398",
+    "year": 2024,
+    "series": "Divers",
+    "side": "light",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75398-1.png"
+  },
+  {
+    "id": 24,
+    "name": "Dark Vador (Édition 25 ans)",
+    "set_number": "75387",
+    "year": 2024,
+    "series": "Divers",
+    "side": "dark",
+    "image_url": "https://img.bricklink.com/ItemImage/SN/0/75387-1.png"
+  }
+]

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🪖 Lego Star Wars Helmets</title>
+
+  <!-- Google Fonts : Orbitron pour les titres, Inter pour le corps -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="stars-layer" aria-hidden="true">
+      <span class="star"></span><span class="star"></span><span class="star"></span>
+      <span class="star"></span><span class="star"></span><span class="star"></span>
+      <span class="star"></span><span class="star"></span><span class="star"></span>
+      <span class="star"></span><span class="star"></span><span class="star"></span>
+      <span class="star"></span><span class="star"></span><span class="star"></span>
+      <span class="star"></span><span class="star"></span><span class="star"></span>
+      <span class="star"></span><span class="star"></span>
+    </div>
+    <div class="header-inner">
+      <h1 class="site-title">🪖 Lego Star Wars Helmets</h1>
+      <p class="site-subtitle">Collection officielle des casques Lego Star Wars</p>
+    </div>
+  </header>
+
+  <!-- ===== FILTRES ===== -->
+  <section class="filters-section" aria-label="Filtres">
+    <div class="filters-inner">
+
+      <!-- Recherche par nom -->
+      <div class="filter-group" id="filter-search">
+        <span class="filter-label">Recherche</span>
+        <div class="search-wrap">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input
+            type="search"
+            id="search-input"
+            class="search-input"
+            placeholder="Nom du casque…"
+            aria-label="Rechercher un casque par nom"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      <!-- Filtre : Série -->
+      <div class="filter-group" id="filter-series">
+        <span class="filter-label">Série</span>
+        <div class="filter-buttons" role="group" aria-label="Filtrer par série">
+          <button class="filter-btn active" data-filter="series" data-value="all">Tous</button>
+          <button class="filter-btn" data-filter="series" data-value="Trilogie Originale">Trilogie Originale</button>
+          <button class="filter-btn" data-filter="series" data-value="Prélogie">Prélogie</button>
+          <button class="filter-btn" data-filter="series" data-value="Trilogie Sequel">Trilogie Sequel</button>
+          <button class="filter-btn" data-filter="series" data-value="The Mandalorian">The Mandalorian</button>
+          <button class="filter-btn" data-filter="series" data-value="The Clone Wars">The Clone Wars</button>
+          <button class="filter-btn" data-filter="series" data-value="Divers">Divers</button>
+        </div>
+      </div>
+
+      <!-- Filtre : Côté de la Force -->
+      <div class="filter-group" id="filter-side">
+        <span class="filter-label">Côté de la Force</span>
+        <div class="filter-buttons" role="group" aria-label="Filtrer par côté de la Force">
+          <button class="filter-btn active" data-filter="side" data-value="all">Tous</button>
+          <button class="filter-btn side-light" data-filter="side" data-value="light">Côté Lumineux</button>
+          <button class="filter-btn side-dark" data-filter="side" data-value="dark">Côté Obscur</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== COMPTEUR ===== -->
+  <div class="count-bar">
+    <span class="count-label">
+      <span id="helmet-count">0</span> casque(s) affiché(s)
+    </span>
+  </div>
+
+  <!-- ===== SPINNER DE CHARGEMENT ===== -->
+  <div id="loading-spinner" class="loading-spinner hidden" aria-label="Chargement en cours">
+    <div class="spinner-ring"></div>
+    <p class="spinner-text">Chargement de la collection…</p>
+  </div>
+
+  <!-- ===== GRILLE DE CASQUES ===== -->
+  <main class="helmets-grid" id="helmets-grid" aria-live="polite">
+    <!-- Les cartes sont injectées par app.js -->
+  </main>
+
+  <!-- ===== MESSAGE VIDE ===== -->
+  <div class="empty-state hidden" id="empty-state">
+    <span class="empty-icon">🔭</span>
+    <p>Aucun casque ne correspond à ces filtres.</p>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>Lego Star Wars Helmets &mdash; Collection non officielle à des fins de présentation.</p>
+    <p class="footer-sub">May the Force be with you. 🌟</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

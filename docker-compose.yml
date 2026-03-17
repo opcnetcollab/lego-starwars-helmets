@@ -1,0 +1,12 @@
+services:
+  lego-starwars-helmets:
+    image: ghcr.io/opcnetcollab/lego-starwars-helmets:latest
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.lego-starwars-helmets.rule=Host(`lego-starwars-helmets.srv1465877.hstgr.cloud`)
+      - traefik.http.routers.lego-starwars-helmets.entrypoints=websecure
+      - traefik.http.routers.lego-starwars-helmets.tls.certresolver=letsencrypt
+      - traefik.http.services.lego-starwars-helmets.loadbalancer.server.port=80
+    environment:
+      - TZ=Europe/Paris
