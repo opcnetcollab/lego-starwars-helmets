@@ -30,6 +30,13 @@
     <div class="hero-nebula hero-nebula--light" aria-hidden="true"></div>
 
     <div class="hero-inner">
+      <!-- v2: Badge Édition 2024 -->
+      <div class="hero-badge" aria-label="Édition 2024">
+        <span>✦</span>
+        <span>Édition 2024</span>
+        <span>✦</span>
+      </div>
+
       <div class="hero-logo" aria-hidden="true">
         <span class="hero-logo__star">✦</span>
         <span class="hero-logo__text">LEGO · STAR WARS</span>
@@ -41,9 +48,28 @@
         <span class="hero-title__sub">COLLECTION</span>
       </h1>
 
-      <p class="hero-subtitle">
-        Collection officielle&nbsp;·&nbsp;<span id="hero-count">24</span> casques iconiques
-      </p>
+      <!-- v2: Stats numériques -->
+      <div class="hero-stats" aria-label="Statistiques de la collection">
+        <div class="hero-stat">
+          <span class="hero-stat__value" id="stat-total">24</span>
+          <span class="hero-stat__label">Casques</span>
+        </div>
+        <div class="hero-stats-divider" aria-hidden="true"></div>
+        <div class="hero-stat">
+          <span class="hero-stat__value" id="stat-series">6</span>
+          <span class="hero-stat__label">Séries</span>
+        </div>
+        <div class="hero-stats-divider" aria-hidden="true"></div>
+        <div class="hero-stat">
+          <span class="hero-stat__value hero-stat__value--light" id="stat-light">12</span>
+          <span class="hero-stat__label">Lumineux</span>
+        </div>
+        <div class="hero-stats-divider" aria-hidden="true"></div>
+        <div class="hero-stat">
+          <span class="hero-stat__value hero-stat__value--dark" id="stat-dark">12</span>
+          <span class="hero-stat__label">Obscur</span>
+        </div>
+      </div>
 
       <a href="#filters-section" class="hero-cta" aria-label="Explorer la collection">
         <span>Explorer la collection</span>
@@ -63,8 +89,9 @@
   <section class="filters-section" id="filters-section" aria-label="Filtres de la collection">
     <div class="filters-inner">
 
-      <!-- Recherche holographique -->
-      <div class="filter-group filter-group--search">
+      <!-- Ligne haute: recherche + tri -->
+      <div class="filters-top">
+        <!-- Recherche holographique avec clear btn -->
         <div class="search-wrap">
           <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
             fill="none" stroke="currentColor" stroke-width="2"
@@ -79,6 +106,22 @@
             aria-label="Rechercher un casque par nom"
             autocomplete="off"
           />
+          <!-- v2: bouton clear -->
+          <button class="search-clear hidden" id="search-clear" aria-label="Effacer la recherche" title="Effacer">✕</button>
+        </div>
+
+        <!-- v2: Sort dropdown -->
+        <div class="sort-wrap">
+          <label for="sort-select" class="sort-label" aria-label="Trier par">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="9" y1="18" x2="15" y2="18"/></svg>
+          </label>
+          <select id="sort-select" class="sort-select" aria-label="Trier par">
+            <option value="year-desc">Année ↓ (récent)</option>
+            <option value="year-asc">Année ↑ (ancien)</option>
+            <option value="name-asc">Nom A→Z</option>
+            <option value="name-desc">Nom Z→A</option>
+            <option value="series">Série</option>
+          </select>
         </div>
       </div>
 
@@ -88,13 +131,33 @@
         <!-- Filtre Série -->
         <div class="filter-group" id="filter-series">
           <div class="filter-buttons" role="group" aria-label="Filtrer par série">
-            <button class="filter-btn active" data-filter="series" data-value="all">Tous</button>
-            <button class="filter-btn series-btn" data-filter="series" data-value="Trilogie Originale" data-series="original">Originale</button>
-            <button class="filter-btn series-btn" data-filter="series" data-value="Prélogie" data-series="prequel">Prélogie</button>
-            <button class="filter-btn series-btn" data-filter="series" data-value="Trilogie Sequel" data-series="sequel">Sequel</button>
-            <button class="filter-btn series-btn" data-filter="series" data-value="The Mandalorian" data-series="mando">Mando</button>
-            <button class="filter-btn series-btn" data-filter="series" data-value="The Clone Wars" data-series="clone-wars">Clone Wars</button>
-            <button class="filter-btn series-btn" data-filter="series" data-value="Divers" data-series="divers">Divers</button>
+            <button class="filter-btn active" data-filter="series" data-value="all">
+              Tous <span class="filter-count" id="count-series-all">24</span>
+            </button>
+            <button class="filter-btn series-btn" data-filter="series" data-value="Trilogie Originale" data-series="original">
+              <span class="filter-dot" style="background:var(--series-original)"></span>
+              Originale <span class="filter-count" id="count-series-original">0</span>
+            </button>
+            <button class="filter-btn series-btn" data-filter="series" data-value="Prélogie" data-series="prequel">
+              <span class="filter-dot" style="background:var(--series-prequel)"></span>
+              Prélogie <span class="filter-count" id="count-series-prequel">0</span>
+            </button>
+            <button class="filter-btn series-btn" data-filter="series" data-value="Trilogie Sequel" data-series="sequel">
+              <span class="filter-dot" style="background:var(--series-sequel)"></span>
+              Sequel <span class="filter-count" id="count-series-sequel">0</span>
+            </button>
+            <button class="filter-btn series-btn" data-filter="series" data-value="The Mandalorian" data-series="mando">
+              <span class="filter-dot" style="background:var(--series-mando)"></span>
+              Mando <span class="filter-count" id="count-series-mando">0</span>
+            </button>
+            <button class="filter-btn series-btn" data-filter="series" data-value="The Clone Wars" data-series="clone-wars">
+              <span class="filter-dot" style="background:var(--series-clone-wars)"></span>
+              Clone Wars <span class="filter-count" id="count-series-clone-wars">0</span>
+            </button>
+            <button class="filter-btn series-btn" data-filter="series" data-value="Divers" data-series="divers">
+              <span class="filter-dot" style="background:var(--series-divers)"></span>
+              Divers <span class="filter-count" id="count-series-divers">0</span>
+            </button>
           </div>
         </div>
 
@@ -110,6 +173,12 @@
         </div>
 
       </div>
+
+      <!-- v2: Active filter tags -->
+      <div class="active-filters" id="active-filters" aria-live="polite" aria-label="Filtres actifs">
+        <!-- Injecté par app.js -->
+      </div>
+
     </div>
   </section>
 
@@ -118,6 +187,7 @@
     <span class="count-bar__text">
       ▸ <span id="helmet-count">0</span> casque(s) affiché(s)
     </span>
+    <span class="count-bar__spacer"></span>
   </div>
 
   <!-- ===== SPINNER ===== -->
@@ -139,6 +209,65 @@
     <button class="empty-state__reset" id="reset-filters">Réinitialiser les filtres</button>
   </div>
 
+  <!-- ===== MODAL DÉTAIL ===== -->
+  <div class="modal-backdrop hidden" id="helmet-modal" role="dialog" aria-modal="true" aria-labelledby="modal-helmet-name">
+    <div class="modal-container" id="modal-container">
+      <button class="modal-close" id="modal-close" aria-label="Fermer">✕</button>
+
+      <div class="modal-layout">
+        <!-- Image -->
+        <div class="modal-image-col">
+          <div class="modal-image-wrap">
+            <img id="modal-image" src="" alt="" class="modal-image" />
+            <div class="modal-image-glow" id="modal-image-glow"></div>
+          </div>
+          <div class="modal-side-badge" id="modal-side-badge"></div>
+        </div>
+
+        <!-- Infos -->
+        <div class="modal-info-col">
+          <div class="modal-series-badge" id="modal-series-badge"></div>
+          <h2 class="modal-helmet-name" id="modal-helmet-name"></h2>
+
+          <div class="modal-specs">
+            <div class="modal-spec">
+              <span class="modal-spec__label">Set Number</span>
+              <span class="modal-spec__value" id="modal-set-number"></span>
+            </div>
+            <div class="modal-spec">
+              <span class="modal-spec__label">Année</span>
+              <span class="modal-spec__value" id="modal-year"></span>
+            </div>
+            <div class="modal-spec">
+              <span class="modal-spec__label">Série</span>
+              <span class="modal-spec__value" id="modal-series"></span>
+            </div>
+            <div class="modal-spec">
+              <span class="modal-spec__label">Côté de la Force</span>
+              <span class="modal-spec__value" id="modal-side"></span>
+            </div>
+          </div>
+
+          <!-- Force side visual indicator -->
+          <div class="modal-force-bar" id="modal-force-bar">
+            <div class="modal-force-bar__fill" id="modal-force-fill"></div>
+            <span class="modal-force-bar__label" id="modal-force-label"></span>
+          </div>
+
+          <div class="modal-actions">
+            <button class="modal-btn modal-btn--primary" id="modal-fav-btn" aria-label="Ajouter aux favoris">
+              <span id="modal-fav-icon">♡</span> Favoris
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation prev/next -->
+      <button class="modal-nav modal-nav--prev" id="modal-prev" aria-label="Casque précédent">‹</button>
+      <button class="modal-nav modal-nav--next" id="modal-next" aria-label="Casque suivant">›</button>
+    </div>
+  </div>
+
   <!-- ===== FOOTER ===== -->
   <footer class="site-footer">
     <div class="footer-separator" aria-hidden="true">
@@ -147,7 +276,7 @@
     <div class="footer-inner">
       <p class="footer-title">Lego Star Wars Helmets — Collection non officielle</p>
       <p class="footer-tagline">May the Force be with you. 🌟</p>
-      <p class="footer-meta">© 2024 · Données : Bricklink · v1.0</p>
+      <p class="footer-meta">© 2024 · Données : Bricklink · v2.0</p>
     </div>
   </footer>
 

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🪖 Lego Star Wars Helmets — v2 Mockup (Détail Modal)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-void:       #060810;
+      --color-deep-space: #0b0f1a;
+      --color-nebula:     #111827;
+      --color-steel:      #1c2535;
+      --color-chrome:     #252f42;
+      --color-text-primary:   #e8eaf0;
+      --color-text-secondary: #8892a4;
+      --color-text-muted:     #4a5568;
+      --color-light-primary:  #4fc3f7;
+      --color-dark-primary:   #e53935;
+      --color-dark-purple:    #7b1fa2;
+      --color-chrome-light: #b0bec5;
+      --color-chrome-mid:   #78909c;
+      --color-gold-accent:  #c8a84b;
+      --series-original:    #ffd54f;
+      --series-mando:       #90a4ae;
+      --radius-card:        16px;
+      --radius-sm:          8px;
+      --radius-pill:        999px;
+      --transition-smooth:  0.25s cubic-bezier(0.4,0,0.2,1);
+      --font-display: 'Orbitron', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --font-mono:    'JetBrains Mono', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: rgba(6,8,16,0.95);
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mockup-header {
+      background: rgba(200,168,75,0.08);
+      border-bottom: 1px solid rgba(200,168,75,0.2);
+      padding: 8px 16px;
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      color: var(--color-gold-accent);
+      letter-spacing: 0.1em;
+      text-align: center;
+    }
+
+    /* =============================================
+       MODAL BACKDROP
+    ============================================= */
+    .modal-backdrop {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      /* Simule le fond derrière le modal (grille floutée) */
+      background: 
+        radial-gradient(ellipse at 20% 80%, rgba(123,31,162,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(41,182,246,0.1) 0%, transparent 60%),
+        var(--color-void);
+      position: relative;
+    }
+
+    /* Grille floue en arrière-plan */
+    .modal-bg-blur {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 60px,
+        rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px
+      ), repeating-linear-gradient(
+        90deg, transparent, transparent 60px,
+        rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px
+      );
+      opacity: 0.5;
+    }
+
+    /* =============================================
+       MODAL CONTAINER
+    ============================================= */
+    .helmet-modal {
+      position: relative;
+      width: 100%;
+      max-width: 860px;
+      background: linear-gradient(145deg, rgba(17,24,39,0.97), rgba(28,37,53,0.97));
+      border: 1px solid rgba(176,190,197,0.18);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow:
+        0 40px 100px rgba(0,0,0,0.8),
+        0 0 60px rgba(229,57,53,0.12),
+        inset 0 1px 0 rgba(255,255,255,0.06);
+      animation: modalEnter 0.35s cubic-bezier(0.34,1.3,0.64,1);
+      z-index: 1;
+    }
+    @keyframes modalEnter {
+      from { opacity: 0; transform: scale(0.92) translateY(20px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* Close button */
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      width: 36px; height: 36px;
+      background: rgba(28,37,53,0.8);
+      border: 1px solid rgba(176,190,197,0.2);
+      border-radius: var(--radius-sm);
+      color: var(--color-text-secondary);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+      transition: all var(--transition-smooth);
+      z-index: 10;
+    }
+    .modal-close:hover {
+      border-color: var(--color-dark-primary);
+      color: var(--color-dark-primary);
+    }
+
+    /* Navigation prev/next */
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px; height: 36px;
+      background: rgba(28,37,53,0.8);
+      border: 1px solid rgba(176,190,197,0.2);
+      border-radius: var(--radius-sm);
+      color: var(--color-text-secondary);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-smooth);
+      z-index: 10;
+    }
+    .modal-nav:hover {
+      border-color: var(--color-light-primary);
+      color: var(--color-light-primary);
+    }
+    .modal-nav--prev { left: -50px; }
+    .modal-nav--next { right: -50px; }
+
+    /* =============================================
+       MODAL LAYOUT : 2 colonnes
+    ============================================= */
+    .modal-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      min-height: 480px;
+    }
+
+    /* Colonne gauche — Visuel */
+    .modal-visual {
+      position: relative;
+      background: linear-gradient(160deg, rgba(28,37,53,0.9), rgba(11,15,26,0.95));
+      border-right: 1px solid rgba(176,190,197,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 30px;
+      overflow: hidden;
+    }
+
+    /* Glow nébuleuse derrière le casque */
+    .modal-visual-glow {
+      position: absolute;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(229,57,53,0.2) 0%, transparent 70%);
+      filter: blur(30px);
+    }
+
+    .modal-helmet-img {
+      position: relative;
+      z-index: 1;
+      font-size: 8rem;
+      filter: drop-shadow(0 0 40px rgba(229,57,53,0.5)) drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+      animation: helmFloat 4s ease-in-out infinite;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    @keyframes helmFloat {
+      0%,100% { transform: translateY(0) rotate(-3deg); }
+      50%      { transform: translateY(-16px) rotate(3deg); }
+    }
+
+    /* Thumbnails variantes (v2 — multi-angle) */
+    .modal-thumbnails {
+      display: flex;
+      gap: 8px;
+      z-index: 1;
+    }
+    .modal-thumb {
+      width: 52px; height: 52px;
+      background: rgba(28,37,53,0.8);
+      border: 1px solid rgba(176,190,197,0.15);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      transition: all var(--transition-smooth);
+      filter: grayscale(0.5) brightness(0.7);
+    }
+    .modal-thumb.active,
+    .modal-thumb:hover {
+      border-color: var(--color-dark-primary);
+      filter: none;
+      box-shadow: 0 0 12px rgba(229,57,53,0.3);
+    }
+
+    /* v2 : Badge côté affiché dans la colonne visuelle */
+    .modal-side-badge {
+      position: absolute;
+      bottom: 12px; left: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(229,57,53,0.12);
+      border: 1px solid rgba(229,57,53,0.35);
+      border-radius: var(--radius-pill);
+      padding: 5px 12px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--color-dark-primary);
+    }
+    .modal-side-badge__dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--color-dark-primary);
+      animation: pulseDot 1.5s ease-in-out infinite;
+    }
+    @keyframes pulseDot {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50%      { transform: scale(1.6); opacity: 0.6; }
+    }
+
+    /* Colonne droite — Contenu */
+    .modal-content {
+      padding: 32px 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Header modal */
+    .modal-content-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .modal-series-badge {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(255,213,79,0.15);
+      border: 1px solid rgba(255,213,79,0.35);
+      color: var(--series-original);
+      white-space: nowrap;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      color: var(--color-text-primary);
+      margin-bottom: 4px;
+    }
+    .modal-subtitle {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      font-family: var(--font-mono);
+    }
+
+    /* v2 : Actions rapides header */
+    .modal-actions-top {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .modal-action-btn {
+      width: 36px; height: 36px;
+      background: rgba(28,37,53,0.6);
+      border: 1px solid var(--color-chrome);
+      border-radius: var(--radius-sm);
+      color: var(--color-text-secondary);
+      font-size: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-smooth);
+    }
+    .modal-action-btn:hover {
+      border-color: var(--color-light-primary);
+      color: var(--color-light-primary);
+    }
+    .modal-action-btn.active {
+      background: rgba(229,57,53,0.12);
+      border-color: var(--color-dark-primary);
+      color: var(--color-dark-primary);
+    }
+
+    /* =============================================
+       v2 : SPECS TABLE
+    ============================================= */
+    .modal-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(176,190,197,0.08);
+      border: 1px solid rgba(176,190,197,0.1);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .spec-item {
+      background: rgba(17,24,39,0.8);
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .spec-item:nth-child(odd):last-child {
+      grid-column: 1 / -1;
+    }
+    .spec-label {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    .spec-value {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--color-text-primary);
+      font-weight: 600;
+    }
+    .spec-value--accent { color: var(--color-dark-primary); }
+    .spec-value--light  { color: var(--color-light-primary); }
+    .spec-value--gold   { color: var(--color-gold-accent); }
+
+    /* =============================================
+       v2 : DESCRIPTION
+    ============================================= */
+    .modal-description {
+      font-size: 0.85rem;
+      line-height: 1.65;
+      color: var(--color-text-secondary);
+      border-left: 2px solid rgba(229,57,53,0.4);
+      padding-left: 14px;
+    }
+
+    /* =============================================
+       v2 : CTA + actions bas
+    ============================================= */
+    .modal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(176,190,197,0.08);
+      margin-top: auto;
+    }
+
+    .modal-cta-primary {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 20px;
+      background: linear-gradient(135deg, rgba(229,57,53,0.2), rgba(123,31,162,0.2));
+      border: 1px solid rgba(229,57,53,0.4);
+      border-radius: var(--radius-sm);
+      color: var(--color-dark-primary);
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all var(--transition-smooth);
+    }
+    .modal-cta-primary:hover {
+      background: linear-gradient(135deg, rgba(229,57,53,0.3), rgba(123,31,162,0.3));
+      box-shadow: 0 0 20px rgba(229,57,53,0.25);
+      transform: translateY(-1px);
+    }
+
+    .modal-cta-secondary {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 11px 16px;
+      background: rgba(28,37,53,0.6);
+      border: 1px solid var(--color-chrome);
+      border-radius: var(--radius-sm);
+      color: var(--color-text-secondary);
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all var(--transition-smooth);
+    }
+    .modal-cta-secondary:hover {
+      border-color: var(--color-light-primary);
+      color: var(--color-light-primary);
+    }
+
+    .modal-counter {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--color-text-muted);
+    }
+    .modal-counter strong { color: var(--color-text-secondary); }
+
+    /* =============================================
+       v2 : RELATED HELMETS strip
+    ============================================= */
+    .modal-related {
+      padding: 16px 32px 24px;
+      border-top: 1px solid rgba(176,190,197,0.08);
+    }
+    .modal-related-title {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 12px;
+    }
+    .modal-related-scroll {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .related-card {
+      flex-shrink: 0;
+      width: 80px;
+      background: rgba(28,37,53,0.6);
+      border: 1px solid var(--color-chrome);
+      border-radius: var(--radius-sm);
+      padding: 10px 8px 8px;
+      cursor: pointer;
+      text-align: center;
+      transition: all var(--transition-smooth);
+    }
+    .related-card:hover {
+      border-color: rgba(176,190,197,0.35);
+      background: rgba(28,37,53,0.9);
+    }
+    .related-card.active {
+      border-color: var(--color-dark-primary);
+      background: rgba(229,57,53,0.08);
+    }
+    .related-card__icon { font-size: 2rem; display: block; margin-bottom: 4px; }
+    .related-card__name {
+      font-size: 0.56rem;
+      color: var(--color-text-muted);
+      font-family: var(--font-mono);
+      line-height: 1.3;
+    }
+
+    /* Scrollbar custom */
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-track { background: var(--color-deep-space); }
+    ::-webkit-scrollbar-thumb { background: var(--color-chrome); border-radius: 2px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--color-chrome-mid); }
+
+    /* =============================================
+       ANNOTATION (mockup only)
+    ============================================= */
+    .annot {
+      display: inline-block;
+      background: rgba(200,168,75,0.15);
+      border: 1px dashed rgba(200,168,75,0.5);
+      color: var(--color-gold-accent);
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      padding: 1px 6px;
+      border-radius: 3px;
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="mockup-header">
+    ✦ MOCKUP — Lego Star Wars Helmets v2 — Écran 2 : Modal Détail Casque ✦
+  </div>
+
+  <div class="modal-backdrop">
+    <div class="modal-bg-blur"></div>
+
+    <!-- Navigation inter-casques (flèches externes) -->
+    <button class="modal-nav modal-nav--prev" title="Casque précédent">‹</button>
+    <button class="modal-nav modal-nav--next" title="Casque suivant">›</button>
+
+    <!-- ===== MODAL ===== -->
+    <div class="helmet-modal">
+
+      <!-- Close -->
+      <button class="modal-close" title="Fermer">✕</button>
+
+      <!-- Layout 2 colonnes -->
+      <div class="modal-layout">
+
+        <!-- ─── COLONNE VISUELLE ─── -->
+        <div class="modal-visual">
+          <div class="modal-visual-glow"></div>
+
+          <!-- Grande image casque avec float -->
+          <div class="modal-helmet-img">🪖</div>
+
+          <!-- Thumbnails variants (v2) -->
+          <div class="modal-thumbnails">
+            <div class="modal-thumb active" title="Vue face">🪖</div>
+            <div class="modal-thumb" title="Vue 3/4">⛔</div>
+            <div class="modal-thumb" title="Vue profil">🎭</div>
+          </div>
+
+          <!-- Badge côté Force -->
+          <div class="modal-side-badge">
+            <span class="modal-side-badge__dot"></span>
+            Côté Obscur
+          </div>
+        </div>
+
+        <!-- ─── COLONNE CONTENU ─── -->
+        <div class="modal-content">
+
+          <!-- Header -->
+          <div>
+            <div class="modal-content-header">
+              <div>
+                <span class="modal-series-badge">Trilogie Originale</span>
+                <h2 class="modal-title">Casque<br>Dark Vador</h2>
+                <span class="modal-subtitle">#75304 · LEGO Star Wars Helmets</span>
+              </div>
+              <div class="modal-actions-top">
+                <button class="modal-action-btn active" title="Favoris">♥</button>
+                <button class="modal-action-btn" title="Partager">↗</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Specs table (v2 — NOUVEAU) -->
+          <div>
+            <div class="modal-specs">
+              <div class="spec-item">
+                <span class="spec-label">Set #</span>
+                <span class="spec-value spec-value--light">#75304</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Année</span>
+                <span class="spec-value spec-value--gold">1977</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Série</span>
+                <span class="spec-value">Trilogie Originale</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Côté</span>
+                <span class="spec-value spec-value--accent">🔴 Obscur</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Pièces</span>
+                <span class="spec-value">834</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Difficulté</span>
+                <span class="spec-value spec-value--accent">★★★★☆</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Description (v2 — NOUVEAU) -->
+          <div>
+            <p class="modal-description">
+              Le casque iconique de Dark Vador, Seigneur Sith et commandant de l'Empire Galactique.
+              Ce set de collection reproduit fidèlement les détails du casque de l'un des
+              personnages les plus emblématiques de la saga Star Wars. Chaque pièce a été
+              minutieusement conçue pour capturer l'essence du Côté Obscur.
+            </p>
+          </div>
+
+          <!-- Footer actions (v2 — NOUVEAU) -->
+          <div class="modal-footer">
+            <a class="modal-cta-primary" href="https://www.lego.com" target="_blank">
+              <span>🛒</span>
+              <span>Voir sur LEGO.com</span>
+            </a>
+            <button class="modal-cta-secondary">
+              <span>🔗</span>
+              <span>Bricklink</span>
+            </button>
+            <span class="modal-counter"><strong>3</strong> / 24</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── CASQUES LIÉS (v2 — NOUVEAU) ─── -->
+      <div class="modal-related">
+        <div class="modal-related-title">Casques de la même série</div>
+        <div class="modal-related-scroll">
+          <div class="related-card active">
+            <span class="related-card__icon">🪖</span>
+            <span class="related-card__name">Dark Vador</span>
+          </div>
+          <div class="related-card">
+            <span class="related-card__icon">⛔</span>
+            <span class="related-card__name">Luke Skywalker</span>
+          </div>
+          <div class="related-card">
+            <span class="related-card__icon">🎭</span>
+            <span class="related-card__name">Stormtrooper</span>
+          </div>
+          <div class="related-card">
+            <span class="related-card__icon">🪖</span>
+            <span class="related-card__name">Boba Fett</span>
+          </div>
+          <div class="related-card">
+            <span class="related-card__icon">⛔</span>
+            <span class="related-card__name">TIE Pilot</span>
+          </div>
+          <div class="related-card">
+            <span class="related-card__icon">🎭</span>
+            <span class="related-card__name">Princess Leia</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /helmet-modal -->
+  </div><!-- /modal-backdrop -->
+
+</body>
+</html>

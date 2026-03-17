@@ -1,5 +1,6 @@
 # DESIGN.md — Lego Star Wars Helmets
-> Design System v1.0 — Refonte cinématique 2024
+> Design System **v2.0** — Refonte UX Cinématique 2024
+> Mis à jour le 2026-03-17 par UX Designer (ux-vision pipeline)
 
 ---
 
@@ -17,6 +18,8 @@ Le site fusionne l'esthétique de quatre univers visuels récents pour créer un
 | **The Acolyte** | Violet/rouge sombre, particules de Force noire | Côté Obscur, particles, CTA |
 
 **Mood global** : Cinéma de science-fiction premium — sombre, profond, avec des reflets métalliques froids. Chaque casque est traité comme une **pièce de collection muséale** dans une vitrine galactique.
+
+**v2 — Évolution** : De galerie passive → **expérience de collection interactive**. L'utilisateur peut explorer, filtrer, et découvrir chaque casque dans son contexte narratif.
 
 ---
 
@@ -45,18 +48,31 @@ Le site fusionne l'esthétique de quatre univers visuels récents pour créer un
 ```css
 /* ⚡ Côté Lumineux (Ahsoka / Jedi) */
 --color-light-primary:  #4fc3f7;  /* Bleu Force — ciel d'Ahsoka */
---color-light-glow:     #29b6f6;  /* Glow lumineux */
---color-light-soft:     rgba(79, 195, 247, 0.15); /* Glassmorphism clair */
+--color-light-glow:     rgba(79, 195, 247, 0.25);
+--color-light-soft:     rgba(79, 195, 247, 0.12);
 
 /* 🔴 Côté Obscur (The Acolyte / Sith) */
 --color-dark-primary:   #e53935;  /* Rouge Sith */
 --color-dark-purple:    #7b1fa2;  /* Violet Force noire */
 --color-dark-glow:      #d32f2f;  /* Glow obscur */
---color-dark-soft:      rgba(229, 57, 53, 0.15);  /* Glassmorphism sombre */
+--color-dark-soft:      rgba(229, 57, 53, 0.12);
 
 /* Chrome Mandalorian */
 --color-chrome-light:   #b0bec5;  /* Beskar clair */
 --color-chrome-mid:     #78909c;  /* Beskar medium */
+```
+
+### v2 — Nouveaux tokens
+
+```css
+/* Or Galactique — accentuation premium, badges, séparateurs */
+--color-gold-accent:    #c8a84b;
+
+/* Surface hover subtile */
+--color-surface-hover:  rgba(255, 255, 255, 0.04);
+
+/* Border glow interactive */
+--color-border-glow:    rgba(79, 195, 247, 0.3);
 ```
 
 ### Accents par Série
@@ -86,324 +102,347 @@ Le site fusionne l'esthétique de quatre univers visuels récents pour créer un
 
 | Rôle | Font | Taille | Poids | Letter-spacing |
 |------|------|--------|-------|----------------|
-| Hero Title | Orbitron | `clamp(2.5rem, 6vw, 5rem)` | 800 | `0.05em` |
+| Hero Title | Orbitron | `clamp(3rem, 8vw, 6rem)` | 800 | `0.08em` |
 | Hero Subtitle | Inter | `clamp(1rem, 2.5vw, 1.25rem)` | 400 | `0.1em` |
+| Hero Stat Value | JetBrains Mono | `1.5rem` | 600 | — |
 | Section Header | Orbitron | `1.5rem` | 700 | `0.08em` |
-| Card Title | Orbitron | `0.9rem` | 600 | `0.05em` |
-| Card Meta | Inter | `0.75rem` | 400 | `0.02em` |
-| Filter Label | Inter | `0.7rem` | 600 | `0.12em` uppercase |
+| Modal Title | Orbitron | `1.6rem` | 700 | `0.04em` |
+| Card Title | Orbitron | `0.82rem` | 600 | `0.04em` |
+| Card Meta | Inter | `0.68rem` | 400 | `0.02em` |
+| Filter Label | Inter | `0.72rem` | 600 | `0.06em` |
+| Spec Label | Inter | `0.62rem` | 600 | `0.1em` uppercase |
+| Spec Value | JetBrains Mono | `0.82rem` | 600 | — |
 | Footer | Inter | `0.8rem` | 400 | `0.03em` |
 
 ---
 
-## 🏗️ Composants Détaillés
+## 🏗️ Composants Détaillés — v2
 
-### 1. Hero Section
+### 1. Hero Section (v2)
 
-**Layout :** Plein écran (`100vh`), centré verticalement. Fond : animation de fond étoilé + nébuleuse dégradée.
+**Changements v2 :**
+- Hauteur réduite : `72vh` (vs `100vh` v1) — moins d'espace perdu, reach de la collection plus rapide
+- Stats numériques visibles : 4 compteurs (casques, séries, lumineux, obscur)
+- Badge "Édition 2024" en gold
+- Casque flottant animé en décoration droite (illustratif)
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│  [Étoiles animées en parallaxe — 3 couches]         │
+│  [Nébuleuses bg — dark gauche, light droite]        │
 │                                                     │
-│           [Logo micro — étoile + texte]             │
+│  [Badge ✦ 24 casques · Collection 2024]            │  ← v2
+│  [Logo micro]                                       │
 │                                                     │
-│    🪖  LEGO STAR WARS                               │
-│        HELMET COLLECTION                            │
+│    HELMET                                           │        🪖
+│    COLLECTION                                       │      (float)
 │                                                     │
-│    Collection officielle · 24 casques iconiques     │
+│  [24 Casques] | [6 Séries] | [12 Obscur] | [12 Lum]│  ← v2
 │                                                     │
 │    [ ▼  Explorer la collection ]                    │
-│                                                     │
-│  [Nébuleuse violette-rouge bas gauche]              │
-│                    [Nébuleuse bleue bas droite]     │
 └─────────────────────────────────────────────────────┘
 ```
 
-**Détails hero :**
-- Fond : `radial-gradient` depuis `--color-void` avec 2 nébuleuses en `position: absolute`
-- Nébuleuse 1 (Obscur) : `radial-gradient(ellipse, rgba(123,31,162,0.3), transparent)` — bas gauche
-- Nébuleuse 2 (Lumineux) : `radial-gradient(ellipse, rgba(41,182,246,0.2), transparent)` — haut droite
-- Titre : texte avec `text-shadow: 0 0 40px rgba(79,195,247,0.6)` — glow holographique
-- CTA button : glassmorphism avec border chrome, hover → glow complet
-- Animation d'entrée : titre fade-in + slide-up avec `animation-delay: 0.3s`
-- Scroll indicator : chevron animé bounce en bas
+### 2. Barre de Filtres Sticky Glassmorphism (v2)
 
-### 2. Barre de Filtres Sticky Glassmorphism
-
-**Comportement :** `position: sticky; top: 0; z-index: 100`  
-**Effet :** `backdrop-filter: blur(20px) saturate(180%)`, background `rgba(11,15,26,0.85)`  
-**Border :** `1px solid rgba(176,190,197,0.15)` — effet beskar  
-**Shadow :** `box-shadow: 0 8px 32px rgba(0,0,0,0.4)`
+**Changements v2 :**
+- **Sort dropdown** ajouté (par nom, année ↑↓, série)
+- **Bouton clear** sur l'input search
+- **Dots colorés** sur chaque bouton de série (point de la couleur série)
+- **Compteurs** dans chaque filtre (badges numériques)
+- **Active filter tags** : pills supprimables sous les filtres → visibilité des filtres actifs
+- **"Tout effacer"** : lien pour reset tout en un clic
 
 ```
-┌──────────────────────────────────────────────────────────┐
-│ 🔍 [Recherche holographique]  [Tous] [Original] [Prélog] │
-│                               [Mando] [Clone Wars] [+]   │
-│ 💡 Lumineux  🔴 Obscur  ⭐ Tous                          │
-└──────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────┐
+│ 🔍 [Rechercher "Darth"  ✕]       [Trier par : Série ▼]         │
+│                                                                  │
+│ [Tous 24] [●Originale 8] [●Prélogie 5] [●Sequel 4] [●Mando 4]  │
+│ [●Clone Wars 2] [●Divers 1]  |  [💙Lumineux 12] [🔴Obscur 12]  │
+│                                                                  │
+│ FILTRES : [Sequel ✕] [🔴Obscur ✕] ["Darth" ✕]  Tout effacer    │
+└──────────────────────────────────────────────────────────────────┘
 ```
 
-**Boutons de filtre :**
-- Repos : `background: rgba(28,37,53,0.6)`, border `1px solid var(--color-chrome)`
-- Hover : border chrome clair, `box-shadow: 0 0 12px rgba(79,195,247,0.3)`
-- Actif Série : `background: var(--series-xxx)` avec opacity 0.25, border colorée
-- Actif Lumineux : border + glow `--color-light-primary`
-- Actif Obscur : border + glow `--color-dark-primary`
-- Transition : `all 0.25s cubic-bezier(0.4, 0, 0.2, 1)`
-
-**Séparateur série/côté :** `border-right: 1px solid var(--color-chrome)` dans la barre
-
-### 3. Barre de Recherche Holographique
-
-**Design :** Input avec effet holographique au focus
-
+**CSS clé — Filter pills v2 :**
 ```css
-.search-input {
-  background: rgba(11,15,26,0.8);
-  border: 1px solid var(--color-chrome);
-  border-radius: 8px;
-  color: var(--color-text-primary);
-  padding: 10px 16px 10px 40px;
-  transition: all 0.3s ease;
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);  /* ← v2 : pill vs rectangle v1 */
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  transition: all var(--transition-smooth);
 }
 
-.search-input:focus {
-  border-color: var(--color-light-primary);
-  box-shadow: 
-    0 0 0 3px rgba(79,195,247,0.15),
-    0 0 20px rgba(79,195,247,0.2),
-    inset 0 0 10px rgba(79,195,247,0.05);
-  outline: none;
+/* Dot couleur série */
+.filter-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+}
+
+/* Badge compteur dans le filtre */
+.filter-count {
+  background: rgba(255,255,255,0.08);
+  border-radius: var(--radius-pill);
+  padding: 1px 5px;
+  font-size: 0.62rem;
+}
+
+/* Active filter tag (supprimable) */
+.active-filter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(79,195,247,0.1);
+  border: 1px solid rgba(79,195,247,0.25);
+  border-radius: var(--radius-pill);
+  padding: 3px 8px 3px 10px;
+  font-size: 0.7rem;
 }
 ```
 
-**Icône de recherche :** SVG animé au focus → rotate + color change vers `--color-light-primary`
+### 3. Count Bar (v2)
 
-### 4. Cards Casques
+**Changements v2 :**
+- Contexte enrichi : affiche les filtres actifs dans le texte (`3 casques · Sequel · 🔴 Obscur · "Darth"`)
+- **Toggle vue** : boutons grille/liste à droite
 
-**Ratio :** `aspect-ratio: 3/4` (portrait vertical — idéal pour les casques)  
-**Taille desktop :** `280px` largeur min, grille `auto-fill minmax(240px, 1fr)`
+```
+▸ 3 casque(s) · Sequel · 🔴 Obscur · "Darth"           [⊞] [☰]
+```
 
-**Structure anatomique :**
+### 4. Cards Casques (v2)
+
+**Changements v2 :**
+- **Quick actions au hover** : boutons 🔍 (détail) et ♡ (favoris) apparaissent slide-in à droite
+- **Barre de progression année** : fine barre 2px en bas, gradient dark→light proportionnel à l'année (1977→2024)
+- **Zoom image au hover** : image scale(1.06) + filter glow coloré selon côté de la Force
+- **Scanline effect** : overlay subtil au hover pour effet écran holographique
+
 ```
 ┌─────────────────────────────┐
-│  [Badge série — haut gauche] │  ← colored pill
-│  [Badge côté — haut droite]  │  ← 💡 or 🔴
-│                             │
-│      [Image casque]         │  ← object-fit: contain
-│     PNG transparent fond    │
-│                             │
+│  [Badge série]  [Badge côté]│  ← Pills ronds (vs rectangles v1)
+│                         [🔍]│  ← v2 : Quick actions (apparaît au hover)
+│      [Image casque]     [♡] │
+│       (zoom + glow)         │
 │─────────────────────────────│
-│  Nom du casque              │  ← Orbitron 600
-│  Série · Année              │  ← Inter gris
-│  Set #75304                 │  ← Mono chrome
-│                             │
-│  [Voir détails    ▶]        │  ← CTA discret
+│  Nom du casque              │
+│  Série · Année     #75304   │
+│═════════════════════════════│  ← v2 : Barre année (2px, gradient)
 └─────────────────────────────┘
 ```
 
-**États de la card :**
+**CSS clé — Quick actions :**
+```css
+.card-actions {
+  position: absolute;
+  top: 12px; right: 12px;
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity 0.2s ease, transform 0.25s ease;
+}
+.helmet-card:hover .card-actions {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Zoom image */
+.helmet-card:hover .card-image img {
+  transform: scale(1.06) translateY(-4px);
+  filter: drop-shadow(0 0 20px rgba(79,195,247,0.3));
+}
+.helmet-card[data-side="dark"]:hover .card-image img {
+  filter: drop-shadow(0 0 20px rgba(229,57,53,0.3));
+}
+
+/* Barre année */
+.card-year-bar { height: 2px; }
+.card-year-bar__fill {
+  background: linear-gradient(90deg, var(--color-dark-purple), var(--color-light-primary));
+}
+```
+
+### 5. Modal de Détail Casque (v2 — NOUVEAU)
+
+**Composant entièrement nouveau.** Remplace le comportement "rien ne se passe au clic" de v1.
+
+**Layout :** Modal centré, 2 colonnes, max-width 860px  
+**Animation :** `scale(0.92) → scale(1)` + `translateY(20px) → 0` avec spring easing  
+**Fermeture :** Clic sur ✕, Escape, ou clic sur le backdrop  
+**Navigation :** Flèches gauche/droite externes pour passer au casque suivant/précédent
+
+```
+┌────────────────────────────────────────────────────┐
+│                                           [✕ Close]│
+│ ┌──────────────────┐ ┌──────────────────────────┐  │
+│ │   [Nébuleuse]    │ │  [Badge série]            │  │
+│ │                  │ │  Nom du Casque            │  │
+│ │    🪖 float     │ │  #75304 · LEGO SW         │  │
+│ │                  │ │  ┌──────────────────────┐ │  │
+│ │  [Thumbs x3]     │ │  │ SET# │ ANNÉE │ SÉRIE │ │  │
+│ │                  │ │  │ CÔTÉ │PIÈCES │ DIFF  │ │  │
+│ │  [🔴 Obscur ●]  │ │  └──────────────────────┘ │  │
+│ └──────────────────┘ │  Description narrative... │  │
+│                      │  [🛒 LEGO.com] [🔗 Brick] │  │
+│ └──────────────────────────────────────────────┘  │
+│  CASQUES LIÉS : [Vador] [Luke] [Storm] [Boba]...  │
+└────────────────────────────────────────────────────┘
+```
+
+**Détails modal :**
 
 ```css
-/* Repos */
-.helmet-card {
-  background: linear-gradient(135deg, var(--color-nebula), var(--color-steel));
-  border: 1px solid var(--color-chrome);
-  border-radius: 16px;
+/* Entrée */
+.helmet-modal {
+  animation: modalEnter 0.35s cubic-bezier(0.34, 1.3, 0.64, 1);
+}
+@keyframes modalEnter {
+  from { opacity: 0; transform: scale(0.92) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Colonne visuelle */
+.modal-visual {
+  background: linear-gradient(160deg, rgba(28,37,53,0.9), rgba(11,15,26,0.95));
+  border-right: 1px solid rgba(176,190,197,0.1);
+}
+
+/* Specs table */
+.modal-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(176,190,197,0.08);  /* Border trick */
+  border-radius: var(--radius-sm);
   overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.4s ease;
 }
 
-/* Hover */
-.helmet-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  border-color: var(--color-chrome-light);
-  box-shadow: 
-    0 20px 60px rgba(0,0,0,0.6),
-    0 0 30px rgba(79,195,247,0.2),  /* glow blue */
-    inset 0 1px 0 rgba(176,190,197,0.2); /* top highlight */
-}
-
-/* Hover côté Obscur */
-.helmet-card[data-side="dark"]:hover {
-  box-shadow: 
-    0 20px 60px rgba(0,0,0,0.6),
-    0 0 30px rgba(229,57,53,0.2);  /* glow red */
+/* CTA primaire (couleur selon côté) */
+.modal-cta-primary {
+  background: linear-gradient(135deg, rgba(229,57,53,0.2), rgba(123,31,162,0.2));
+  border: 1px solid rgba(229,57,53,0.4);
+  /* Pour Lumineux : rgba(79,195,247,0.2) + rgba(41,182,246,0.4) */
 }
 ```
 
-**Overlay hover :** gradient de bas `linear-gradient(transparent 50%, rgba(6,8,16,0.9))` — permanent, intensifie au hover
+**Sections du modal :**
+1. **Header** : badge série, titre, set#, boutons favoris/partager
+2. **Specs grid** : Set#, Année, Série, Côté, Pièces, Difficulté
+3. **Description** : texte narratif avec border-left colored
+4. **CTA footer** : LEGO.com (primary) + Bricklink (secondary) + compteur `3/24`
+5. **Casques liés** : scroll horizontal des autres casques de la même série
 
-**Image :** `filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5))` — donne du relief
+### 6. Barre de Recherche Holographique (inchangée v1)
 
-**Badge série :**
 ```css
-.badge-series {
-  font-family: var(--font-body);
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 3px 8px;
-  border-radius: 4px;
-  background: rgba(var(--series-rgb), 0.2);
-  border: 1px solid rgba(var(--series-rgb), 0.4);
-  color: var(--series-color);
+.search-input:focus {
+  border-color: var(--color-light-primary);
+  box-shadow: 
+    0 0 0 3px rgba(79,195,247,0.12),
+    0 0 16px rgba(79,195,247,0.15);
 }
 ```
 
-### 5. Compteur de résultats
-
-**Design :** Ligne discrète entre filtres et grille
+### 7. État vide (inchangé v1)
 
 ```
-  ▸ 24 casques  ·  Trilogie Originale  ·  Côté Obscur
+  🔭
+  Aucun casque trouvé
+  dans cette région de la galaxie.
+  [ Réinitialiser les filtres ]
 ```
 
-- Typographie : Inter 0.8rem, `--color-text-muted`
-- Accent actif : breadcrumb filtres avec séparateur `·`
-- Animation : count change avec `countUp` JS animation
-
-### 6. État vide
-
-**Design :** Centré, avec illustration et message Star Wars
+### 8. Footer (inchangé v1)
 
 ```
-        🔭
-   Aucun casque trouvé
-   dans cette région de la galaxie.
-   
-   [ Réinitialiser les filtres ]
-```
-
-### 7. Footer
-
-**Design :** Minimaliste, dark, avec séparateur gradient
-
-```
-────────────────────── ✦ ──────────────────────
+────────── ✦ ──────────
 Lego Star Wars Helmets — Collection non officielle
-          May the Force be with you. 🌟
-       © 2024 · Données : Bricklink · v1.0
+May the Force be with you. 🌟
+© 2024 · Données : Bricklink · v2.0
 ```
-
-- Background : `--color-void` avec top border `1px solid rgba(176,190,197,0.1)`
-- Texte : `--color-text-muted`
-- Séparateur top : `linear-gradient(to right, transparent, var(--color-chrome), transparent)`
 
 ---
 
 ## ✨ Animations & Effets Spéciaux
 
-### Fond étoilé animé (3 couches)
+### Fond étoilé animé (3 couches) — inchangé v1
 
+### Particules de Force (canvas) — inchangé v1
+
+### v2 — Nouvelles animations
+
+#### Casque flottant dans le hero
 ```css
-/* Couche 1 — petites étoiles rapides */
-.stars-layer-1 {
-  width: 1px; height: 1px;
-  background: transparent;
-  box-shadow: /* 200 positions random en CSS ou JS */;
-  animation: starsDrift 50s linear infinite;
-}
-
-/* Couche 2 — étoiles moyennes lentes */
-.stars-layer-2 {
-  width: 2px; height: 2px;
-  animation: starsDrift 100s linear infinite;
-}
-
-/* Couche 3 — grosses étoiles très lentes + scintillement */
-.stars-layer-3 {
-  width: 3px; height: 3px;
-  animation: starsDrift 150s linear infinite, twinkle 3s ease-in-out infinite;
-}
-
-@keyframes starsDrift {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-100vh); }
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
-  50%       { opacity: 1; }
+@keyframes helmFloat {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-18px) rotate(2deg); }
 }
 ```
 
-### Particules de Force (subtiles)
-
-- Canvas JS overlay dans le hero
-- 30 particules flottantes : côté Lumineux = bleu (0,0,0 → 79,195,247), Obscur = rouge (229,57,53)
-- Mouvement : brownien lent, taille 1-3px, opacité 0.1-0.6
-- Activation : au hover sur les filtres Côté de la Force
-
-### Effet holographique sur le titre
-
+#### Dot pulsant (badge Côté de la Force dans modal)
 ```css
-.site-title {
-  background: linear-gradient(
-    135deg,
-    #e8eaf0 0%,
-    #4fc3f7 30%,
-    #e8eaf0 50%,
-    #b0bec5 70%,
-    #e8eaf0 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: holographicShimmer 4s linear infinite;
+@keyframes pulseDot {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.6); opacity: 0.6; }
 }
+```
 
-@keyframes holographicShimmer {
+#### Shimmer titre hero (v2 — angle ajusté)
+```css
+@keyframes shimmer {
   from { background-position: 0% center; }
   to   { background-position: 200% center; }
 }
 ```
 
-### Scanline subtle sur les cards (optionnel, au hover)
-
+#### Modal entrée
 ```css
-.helmet-card::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0,0,0,0) 0px,
-    rgba(0,0,0,0) 2px,
-    rgba(255,255,255,0.02) 2px,
-    rgba(255,255,255,0.02) 4px
-  );
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
+@keyframes modalEnter {
+  from { opacity: 0; transform: scale(0.92) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
 }
-.helmet-card:hover::after { opacity: 1; }
 ```
 
-### Transitions globales
+#### Quick actions card slide-in
+```css
+/* Au hover card → transition depuis translateX(8px) vers 0 */
+transition: opacity 0.2s ease, transform 0.25s ease;
+```
 
-- **Page load** : `opacity: 0 → 1` sur `.helmets-grid` avec `animation: fadeIn 0.8s ease 0.2s forwards`
-- **Apparition cards** : stagger animation `animation-delay: calc(var(--i) * 0.05s)` — 24 cards × 50ms
-- **Filtre apply** : cards exit `opacity: 0, scale: 0.95`, puis enter `opacity: 1, scale: 1` — 200ms total
-- **Hover card** : spring easing `cubic-bezier(0.34, 1.56, 0.64, 1)` pour le bounce
+### Tokens d'animation
+
+```css
+--transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);  /* Spring pour hover card */
+--transition-smooth: 0.25s cubic-bezier(0.4, 0, 0.2, 1);       /* Material ease-out */
+--transition-fast:   0.15s ease;                                 /* Micro-interactions */
+```
+
+### Préférence reduced-motion
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  .helmet-card { transition: none; }
+  .modal-helmet-img { animation: none; }
+  .hero-title__main { animation: none; }
+  .stars-layer { animation: none; }
+}
+```
 
 ---
 
 ## 📐 Responsive Design
 
-### Breakpoints
+### Breakpoints (inchangés v1)
 
 ```css
-/* Mobile first */
---bp-mobile:  375px;   /* Téléphone S */
---bp-mobile-l: 430px;  /* Téléphone L (iPhone Pro Max) */
---bp-tablet:  768px;   /* Tablette portrait */
---bp-laptop:  1024px;  /* Laptop */
---bp-desktop: 1280px;  /* Desktop standard */
---bp-wide:    1536px;  /* Large écran */
+--bp-mobile:   375px;
+--bp-tablet:   768px;
+--bp-laptop:  1024px;
+--bp-desktop: 1280px;
+--bp-wide:    1536px;
 ```
 
 ### Grille de casques
@@ -414,89 +453,135 @@ Lego Star Wars Helmets — Collection non officielle
 | Mobile L (430-768px) | 2 | 16px | 180px |
 | Tablet (768-1024px) | 3 | 20px | 220px |
 | Laptop (1024-1280px) | 4 | 24px | 240px |
-| Desktop (1280px+) | 5 | 28px | 240px |
-| Wide (1536px+) | 6 | 32px | 260px |
+| Desktop (1280px+) | 5 | 24px | 240px |
+| Wide (1536px+) | 6 | 28px | 260px |
+
+### Modal responsive (v2)
 
 ```css
-.helmets-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
-  gap: clamp(12px, 2vw, 28px);
-  padding: clamp(16px, 3vw, 48px);
-}
-```
+/* Desktop → 2 colonnes */
+.modal-layout { grid-template-columns: 320px 1fr; }
 
-### Hero responsive
-
-```css
-/* Mobile : titre plus petit, padding ajusté */
+/* Tablet → stack vertical */
 @media (max-width: 768px) {
-  .hero-title { font-size: clamp(2rem, 8vw, 3rem); }
-  .hero-subtitle { display: none; } /* Masqué mobile */
-  .hero-section { height: 60vh; } /* Réduit */
+  .modal-layout { grid-template-columns: 1fr; }
+  .modal-visual { min-height: 240px; }
+  .helmet-modal { max-width: 96vw; border-radius: 16px; }
+}
+
+/* Mobile → quasi plein écran, drawer du bas */
+@media (max-width: 480px) {
+  .helmet-modal {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    border-radius: 20px 20px 0 0;
+    max-height: 92vh;
+    overflow-y: auto;
+  }
 }
 ```
 
-### Filtres responsive
-
-**Mobile :** `overflow-x: auto; white-space: nowrap` — défilement horizontal  
-**Tablet+** : wrap naturel sur 2 lignes si nécessaire  
-**Sticky** : conservé sur tous les breakpoints
-
-### Cards responsive
+### Filtres responsive (v2)
 
 ```css
-/* Mobile : ratio ajusté, infos condensées */
-@media (max-width: 430px) {
-  .card-body { padding: 10px 12px; }
-  .card-title { font-size: 0.75rem; }
-  .card-meta { display: none; } /* Masqué sur très petit écran */
-  .badge { font-size: 0.6rem; }
+/* Mobile : sort masqué, active tags sur 2 lignes */
+@media (max-width: 768px) {
+  .sort-select { display: none; }
+  .filters-row { overflow-x: auto; flex-wrap: nowrap; }
+  .active-filters { padding-top: 6px; }
 }
 ```
 
 ---
 
-## 🖼️ Maquettes Stitch Générées
+## 🖼️ Maquettes Générées
 
-Les maquettes haute-fidélité ont été générées via le MCP Stitch :
+> ⚠️ MCP Stitch non disponible dans l'environnement courant (non configuré dans mcporter.json).
+> Les maquettes ont été générées comme fichiers HTML haute-fidélité autonomes.
 
-### Écran 1 — Page principale (Hero + Filtres + Grille)
-- **Fichier HTML :** `.stitch/designs/lego-sw-helmets-main.html`
-- **Screenshot :** `.stitch/designs/lego-sw-helmets-main.png`
+### Écran 1 — Page principale v2 (Hero compact + Filtres v2 + Grille)
+- **Fichier HTML :** `.stitch/designs/lego-sw-helmets-v2-main.html`
+- **Contenu :** Hero 72vh avec stats, filtres pills avec compteurs, active filter tags, sort dropdown, toggle vue grille/liste, 3 cards démo avec quick actions, barre d'année
 
-### Écran 2 — État hover d'une card casque
-- **Fichier HTML :** `.stitch/designs/lego-sw-helmets-card-hover.html`
-- **Screenshot :** `.stitch/designs/lego-sw-helmets-card-hover.png`
-
-> Les URLs/IDs Stitch sont mis à jour après génération.
+### Écran 2 — Modal de détail casque (NOUVEAU v2)
+- **Fichier HTML :** `.stitch/designs/lego-sw-helmets-v2-detail.html`
+- **Contenu :** Modal 2 colonnes, thumbnails multiples, specs grid, description, CTA LEGO.com/Bricklink, casques liés scroll horizontal, navigation prev/next
 
 ---
 
-## 🚀 Checklist d'Implémentation
+## 🚀 Checklist d'Implémentation v2
 
-### Phase 1 — Fondations CSS
-- [ ] Variables CSS (tokens palette, typo, spacing)
-- [ ] Reset + base styles
-- [ ] Fond étoilé animé (3 couches)
-- [ ] Nébuleuses positionnées
+### Phase 1 — Nouvelles variables CSS (tokens v2)
+- [ ] `--color-gold-accent`, `--color-surface-hover`, `--color-border-glow`
+- [ ] `--radius-pill`, `--transition-bounce`, `--transition-smooth`, `--transition-fast`
+- [ ] Tokens d'animation (`--anim-spring`, `--anim-modal`)
 
-### Phase 2 — Composants
-- [ ] Hero section avec animations d'entrée
-- [ ] Filtres glassmorphism sticky
-- [ ] Cards avec tous les états
-- [ ] Recherche holographique
-- [ ] Badges série et côté
+### Phase 2 — Hero v2
+- [ ] Réduire hauteur hero à `72vh`
+- [ ] Ajouter `.hero-badge` gold
+- [ ] Ajouter `.hero-stats` avec 4 compteurs dynamiques
+- [ ] Casque flottant illustratif (optionnel — décor right)
 
-### Phase 3 — Interactivité
-- [ ] Filtrage JS (série + côté + recherche combinés)
-- [ ] Animations de transition filtre
-- [ ] Stagger animation cartes
-- [ ] Particules Force (canvas)
-- [ ] Compteur animé
+### Phase 3 — Filtres v2
+- [ ] Transformer `.filter-btn` en pills (`border-radius: 999px`)
+- [ ] Ajouter `.filter-dot` (cercle couleur série dans chaque bouton)
+- [ ] Ajouter `.filter-count` (badge numérique dynamique)
+- [ ] Ajouter `<select class="sort-select">` avec options nom/année/série
+- [ ] Bouton clear sur l'input search
+- [ ] Composant `.active-filters` : afficher les filtres actifs comme tags supprimables
+- [ ] Lien "Tout effacer" pour reset complet
 
-### Phase 4 — Polish
-- [ ] Responsive mobile/tablet
-- [ ] Accessibilité (aria-labels, focus visible, reduced-motion)
-- [ ] Performance (lazy loading images, will-change CSS)
-- [ ] Dark mode natif (déjà dark by default)
+### Phase 4 — Count bar v2
+- [ ] Afficher les filtres actifs dans le texte du compteur
+- [ ] Ajouter toggle boutons grille/liste `.count-bar__views`
+
+### Phase 5 — Cards v2
+- [ ] Ajouter `.card-actions` (quick actions slide-in au hover)
+- [ ] Ajouter `.card-year-bar` (barre 2px en bas, progression calculée en JS)
+- [ ] Améliorer zoom image au hover avec glow coloré selon `data-side`
+- [ ] Scanline effect (`::before` pseudo-element, opacity 0→1 au hover)
+
+### Phase 6 — Modal de détail (NOUVEAU — priorité haute)
+- [ ] Composant `.helmet-modal` avec layout 2 colonnes
+- [ ] Colonne visuelle : image flottante, thumbnails variants, badge côté pulsant
+- [ ] Colonne contenu : header + specs grid + description + CTA footer
+- [ ] Section `.modal-related` : strip scroll horizontal des casques liés
+- [ ] Navigation prev/next entre casques
+- [ ] Fermeture : ✕, Escape, backdrop click
+- [ ] Animation entrée/sortie modale
+- [ ] Responsive : stack vertical ≤768px, bottom sheet ≤480px
+
+### Phase 7 — JS v2
+- [ ] `computeFilterCounts()` : compter les casques par série/côté dynamiquement
+- [ ] `renderActiveFilterTags()` : afficher/supprimer les tags de filtres actifs
+- [ ] `sortHelmets(by)` : implémenter le tri (nom, année, série)
+- [ ] `openHelmetModal(id)` : ouvrir/fermer le modal + charger les données du casque
+- [ ] `navigateModal(dir)` : prev/next dans la liste filtrée
+- [ ] `computeYearProgress(year)` : calculer le % pour la barre d'année (1977–2024)
+- [ ] `toggleView(mode)` : basculer grille/liste
+- [ ] Gestionnaire Escape pour fermer le modal
+
+### Phase 8 — Polish & Accessibilité
+- [ ] `aria-modal="true"` + `role="dialog"` sur le modal
+- [ ] Focus trap dans le modal
+- [ ] `aria-label` sur tous les boutons d'action
+- [ ] Focus visible custom (ring bleu Force)
+- [ ] `prefers-reduced-motion` : désactiver animations
+- [ ] Lazy loading images (`loading="lazy"`)
+- [ ] `will-change: transform` sur les cards (perf)
+
+---
+
+## 📊 Récapitulatif des Améliorations v1 → v2
+
+| Composant | v1 | v2 | Impact UX |
+|-----------|----|----|-----------|
+| Hero | 100vh (trop grand) | 72vh + stats visibles | Reach collection +30% plus rapide |
+| Filtres | Boutons rectangulaires | Pills colorées + compteurs | Identification série immédiate |
+| Filtres actifs | Invisibles | Tags supprimables | Compréhension état filtre +++ |
+| Recherche | Input basique | + bouton clear + sort | Efficacité tâche recherche |
+| Cards | Statiques au hover | Quick actions + zoom glow + barre année | Engagement +++ |
+| Clic card | Rien | Modal détail complet | Conversion info-produit |
+| Modal | Absent | 2 cols + specs + liés + CTA | Profondeur de découverte |
+| Navigation | — | Prev/next entre casques | Exploration fluide |
+| Vue | Grille fixe | Toggle grille/liste | Préférence utilisateur |
